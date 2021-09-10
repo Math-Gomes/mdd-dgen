@@ -1,0 +1,32 @@
+grammar org.xtext.mdd.Dgen with org.eclipse.xtext.common.Terminals
+
+generate dgen "http://www.xtext.org/mdd/Dgen"
+
+Domainmodel:
+    (elements+=Type)*;
+
+Type:
+    DataType | Entity;
+
+DataType:
+    'datatype' name=ID;
+
+Entity:
+    views=Views
+    'entity' name=ID ('extends' superType=[Entity])? '{'
+        (features+=Feature)*
+    '}';
+
+Feature:
+    (many?='many')? name=ID ':' type=[Type];
+
+ViewGroup:
+	'@' name=('All' | 'None');
+	
+ViewOptions:
+	'@' name=('Create' | 'Read' | 'Update' | 'Delete');
+	 
+Views:
+    (viewGroup=ViewGroup) | (viewOption+=ViewOptions)+;
+    
+
