@@ -149,7 +149,7 @@ public class DgenSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Views returns Views
 	 *
 	 * Constraint:
-	 *     (viewsGroup=ViewGroup | viewOption+=ViewOptions+)
+	 *     (viewGroup=ViewGroup | viewOption+=ViewOptions+)
 	 */
 	protected void sequence_Views(ISerializationContext context, Views semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

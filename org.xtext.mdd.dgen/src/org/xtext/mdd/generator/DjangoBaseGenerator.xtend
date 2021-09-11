@@ -14,7 +14,26 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		fsa.generateFile("project/urls.py", resource.createUrls);
 		fsa.generateFile("project/wsgi.py", resource.createWsgi);
 		
+		fsa.generateFile("scripts/init.sh", resource.createInit);
+		
+		fsa.generateFile("app/admin.py", resource.createAdmin);
+		fsa.generateFile("app/apps.py", resource.createApps);
+		fsa.generateFile("app/models.py", resource.createModels);
+		fsa.generateFile("app/tests.py", resource.createTests);
+		fsa.generateFile("app/views.py", resource.createViews);
+		
 	}
+	
+	private def createInit(Resource resource)'''
+		#!/bin/bash
+		# sudo apt install python3 -y
+		# sudo apt install python3.8-venv -y
+		python3 -m venv env
+		source env/bin/activate
+		pip install -r requirements.txt
+		deactivate
+		
+	'''
 	
 	private def createManage(Resource resource)'''
 		#!/usr/bin/env python
@@ -103,6 +122,7 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		    'django.contrib.sessions',
 		    'django.contrib.messages',
 		    'django.contrib.staticfiles',
+		    'app',
 		]
 		
 		MIDDLEWARE = [
@@ -235,5 +255,35 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		
 		application = get_wsgi_application()
 		
+	'''
+
+	private def createAdmin(Resource resource)'''
+		from django.contrib import admin
+
+		# Register your models here.
+	'''
+	
+	private def createApps(Resource resource)'''
+		from django.apps import AppConfig
+		
+		class AppConfig(AppConfig):
+		    default_auto_field = 'django.db.models.BigAutoField'
+		    name = 'app'
+	'''
+	
+	private def createModels(Resource resource)'''
+		
+	'''
+	
+	private def createTests(Resource resource)'''
+		from django.test import TestCase
+		
+		# Create your tests here.
+	'''
+	
+	private def createViews(Resource resource)'''
+		from django.shortcuts import render
+		
+		# Create your views here.
 	'''
 }

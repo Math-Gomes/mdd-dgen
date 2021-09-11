@@ -330,9 +330,9 @@ rule__Views__Alternatives
 	}
 :
 	(
-		{ before(grammarAccess.getViewsAccess().getViewsGroupAssignment_0()); }
-		(rule__Views__ViewsGroupAssignment_0)
-		{ after(grammarAccess.getViewsAccess().getViewsGroupAssignment_0()); }
+		{ before(grammarAccess.getViewsAccess().getViewGroupAssignment_0()); }
+		(rule__Views__ViewGroupAssignment_0)
+		{ after(grammarAccess.getViewsAccess().getViewGroupAssignment_0()); }
 	)
 	|
 	(
@@ -1042,15 +1042,15 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Views__ViewsGroupAssignment_0
+rule__Views__ViewGroupAssignment_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getViewsAccess().getViewsGroupViewGroupParserRuleCall_0_0()); }
+		{ before(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0()); }
 		ruleViewGroup
-		{ after(grammarAccess.getViewsAccess().getViewsGroupViewGroupParserRuleCall_0_0()); }
+		{ after(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0()); }
 	)
 ;
 finally {

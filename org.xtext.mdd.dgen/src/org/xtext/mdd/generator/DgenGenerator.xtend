@@ -17,8 +17,12 @@ import javax.inject.Inject
 class DgenGenerator extends AbstractGenerator {
 	
 	@Inject DjangoBaseGenerator djangoBaseGenerator
+	@Inject DjangoModelsGenerator djangoModelsGenerator
+	@Inject DjangoViewsGenerator djangoViewsGenerator
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		djangoBaseGenerator.doGenerate(resource, fsa, context);
+		djangoModelsGenerator.doGenerate(resource, fsa, context);
+		djangoViewsGenerator.doGenerate(resource, fsa, context);
 	}
 }

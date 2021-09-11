@@ -352,7 +352,7 @@ public class DgenPackageImpl extends EPackageImpl implements DgenPackage
    * @generated
    */
   @Override
-  public EReference getViews_ViewsGroup()
+  public EReference getViews_ViewGroup()
   {
     return (EReference)viewsEClass.getEStructuralFeatures().get(0);
   }
@@ -424,7 +424,7 @@ public class DgenPackageImpl extends EPackageImpl implements DgenPackage
     createEAttribute(viewOptionsEClass, VIEW_OPTIONS__NAME);
 
     viewsEClass = createEClass(VIEWS);
-    createEReference(viewsEClass, VIEWS__VIEWS_GROUP);
+    createEReference(viewsEClass, VIEWS__VIEW_GROUP);
     createEReference(viewsEClass, VIEWS__VIEW_OPTION);
   }
 
@@ -486,7 +486,7 @@ public class DgenPackageImpl extends EPackageImpl implements DgenPackage
     initEAttribute(getViewOptions_Name(), ecorePackage.getEString(), "name", null, 0, 1, ViewOptions.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(viewsEClass, Views.class, "Views", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getViews_ViewsGroup(), this.getViewGroup(), null, "viewsGroup", null, 0, 1, Views.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getViews_ViewGroup(), this.getViewGroup(), null, "viewGroup", null, 0, 1, Views.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getViews_ViewOption(), this.getViewOptions(), null, "viewOption", null, 0, -1, Views.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

@@ -15,6 +15,32 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     fsa.generateFile("project/settings.py", this.createSettings(resource));
     fsa.generateFile("project/urls.py", this.createUrls(resource));
     fsa.generateFile("project/wsgi.py", this.createWsgi(resource));
+    fsa.generateFile("scripts/init.sh", this.createInit(resource));
+    fsa.generateFile("app/admin.py", this.createAdmin(resource));
+    fsa.generateFile("app/apps.py", this.createApps(resource));
+    fsa.generateFile("app/models.py", this.createModels(resource));
+    fsa.generateFile("app/tests.py", this.createTests(resource));
+    fsa.generateFile("app/views.py", this.createViews(resource));
+  }
+  
+  private CharSequence createInit(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#!/bin/bash");
+    _builder.newLine();
+    _builder.append("# sudo apt install python3 -y");
+    _builder.newLine();
+    _builder.append("# sudo apt install python3.8-venv -y");
+    _builder.newLine();
+    _builder.append("python3 -m venv env");
+    _builder.newLine();
+    _builder.append("source env/bin/activate");
+    _builder.newLine();
+    _builder.append("pip install -r requirements.txt");
+    _builder.newLine();
+    _builder.append("deactivate");
+    _builder.newLine();
+    _builder.newLine();
+    return _builder;
   }
   
   private CharSequence createManage(final Resource resource) {
@@ -181,6 +207,9 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("\'django.contrib.staticfiles\',");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("\'app\',");
     _builder.newLine();
     _builder.append("]");
     _builder.newLine();
@@ -455,6 +484,59 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("application = get_wsgi_application()");
     _builder.newLine();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createAdmin(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("from django.contrib import admin");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("# Register your models here.");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createApps(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("from django.apps import AppConfig");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("class AppConfig(AppConfig):");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("default_auto_field = \'django.db.models.BigAutoField\'");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("name = \'app\'");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createModels(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("\t\t");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createTests(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("from django.test import TestCase");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("# Create your tests here.");
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createViews(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("from django.shortcuts import render");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("# Create your views here.");
     _builder.newLine();
     return _builder;
   }

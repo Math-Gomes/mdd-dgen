@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mdd.dgen.Views#getViewsGroup <em>Views Group</em>}</li>
+ *   <li>{@link org.xtext.mdd.dgen.Views#getViewGroup <em>View Group</em>}</li>
  *   <li>{@link org.xtext.mdd.dgen.Views#getViewOption <em>View Option</em>}</li>
  * </ul>
  *
@@ -27,26 +27,26 @@ import org.eclipse.emf.ecore.EObject;
 public interface Views extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Views Group</b></em>' containment reference.
+   * Returns the value of the '<em><b>View Group</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Views Group</em>' containment reference.
-   * @see #setViewsGroup(ViewGroup)
-   * @see org.xtext.mdd.dgen.DgenPackage#getViews_ViewsGroup()
+   * @return the value of the '<em>View Group</em>' containment reference.
+   * @see #setViewGroup(ViewGroup)
+   * @see org.xtext.mdd.dgen.DgenPackage#getViews_ViewGroup()
    * @model containment="true"
    * @generated
    */
-  ViewGroup getViewsGroup();
+  ViewGroup getViewGroup();
 
   /**
-   * Sets the value of the '{@link org.xtext.mdd.dgen.Views#getViewsGroup <em>Views Group</em>}' containment reference.
+   * Sets the value of the '{@link org.xtext.mdd.dgen.Views#getViewGroup <em>View Group</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Views Group</em>' containment reference.
-   * @see #getViewsGroup()
+   * @param value the new value of the '<em>View Group</em>' containment reference.
+   * @see #getViewGroup()
    * @generated
    */
-  void setViewsGroup(ViewGroup value);
+  void setViewGroup(ViewGroup value);
 
   /**
    * Returns the value of the '<em><b>View Option</b></em>' containment reference list.

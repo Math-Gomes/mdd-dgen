@@ -488,17 +488,17 @@ ruleViews returns [EObject current=null]
 		(
 			(
 				{
-					newCompositeNode(grammarAccess.getViewsAccess().getViewsGroupViewGroupParserRuleCall_0_0());
+					newCompositeNode(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0());
 				}
-				lv_viewsGroup_0_0=ruleViewGroup
+				lv_viewGroup_0_0=ruleViewGroup
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getViewsRule());
 					}
 					set(
 						$current,
-						"viewsGroup",
-						lv_viewsGroup_0_0,
+						"viewGroup",
+						lv_viewGroup_0_0,
 						"org.xtext.mdd.Dgen.ViewGroup");
 					afterParserOrEnumRuleCall();
 				}

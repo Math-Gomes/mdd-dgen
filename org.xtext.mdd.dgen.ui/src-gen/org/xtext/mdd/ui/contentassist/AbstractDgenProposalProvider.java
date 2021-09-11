@@ -55,7 +55,7 @@ public abstract class AbstractDgenProposalProvider extends TerminalsProposalProv
 		// subclasses may override
 		// subclasses may override
 	}
-	public void completeViews_ViewsGroup(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
+	public void completeViews_ViewGroup(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {
 		completeRuleCall(((RuleCall)assignment.getTerminal()), context, acceptor);
 	}
 	public void completeViews_ViewOption(EObject model, Assignment assignment, ContentAssistContext context, ICompletionProposalAcceptor acceptor) {

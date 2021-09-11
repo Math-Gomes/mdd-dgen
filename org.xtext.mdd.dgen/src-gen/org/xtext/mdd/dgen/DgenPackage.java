@@ -309,13 +309,13 @@ public interface DgenPackage extends EPackage
   int VIEWS = 7;
 
   /**
-   * The feature id for the '<em><b>Views Group</b></em>' containment reference.
+   * The feature id for the '<em><b>View Group</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int VIEWS__VIEWS_GROUP = 0;
+  int VIEWS__VIEW_GROUP = 0;
 
   /**
    * The feature id for the '<em><b>View Option</b></em>' containment reference list.
@@ -527,15 +527,15 @@ public interface DgenPackage extends EPackage
   EClass getViews();
 
   /**
-   * Returns the meta object for the containment reference '{@link org.xtext.mdd.dgen.Views#getViewsGroup <em>Views Group</em>}'.
+   * Returns the meta object for the containment reference '{@link org.xtext.mdd.dgen.Views#getViewGroup <em>View Group</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Views Group</em>'.
-   * @see org.xtext.mdd.dgen.Views#getViewsGroup()
+   * @return the meta object for the containment reference '<em>View Group</em>'.
+   * @see org.xtext.mdd.dgen.Views#getViewGroup()
    * @see #getViews()
    * @generated
    */
-  EReference getViews_ViewsGroup();
+  EReference getViews_ViewGroup();
 
   /**
    * Returns the meta object for the containment reference list '{@link org.xtext.mdd.dgen.Views#getViewOption <em>View Option</em>}'.
@@ -732,12 +732,12 @@ public interface DgenPackage extends EPackage
     EClass VIEWS = eINSTANCE.getViews();
 
     /**
-     * The meta object literal for the '<em><b>Views Group</b></em>' containment reference feature.
+     * The meta object literal for the '<em><b>View Group</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference VIEWS__VIEWS_GROUP = eINSTANCE.getViews_ViewsGroup();
+    EReference VIEWS__VIEW_GROUP = eINSTANCE.getViews_ViewGroup();
 
     /**
      * The meta object literal for the '<em><b>View Option</b></em>' containment reference list feature.

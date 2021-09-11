@@ -982,13 +982,13 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Views__Alternatives"
-    // InternalDgen.g:327:1: rule__Views__Alternatives : ( ( ( rule__Views__ViewsGroupAssignment_0 ) ) | ( ( ( rule__Views__ViewOptionAssignment_1 ) ) ( ( rule__Views__ViewOptionAssignment_1 )* ) ) );
+    // InternalDgen.g:327:1: rule__Views__Alternatives : ( ( ( rule__Views__ViewGroupAssignment_0 ) ) | ( ( ( rule__Views__ViewOptionAssignment_1 ) ) ( ( rule__Views__ViewOptionAssignment_1 )* ) ) );
     public final void rule__Views__Alternatives() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:331:1: ( ( ( rule__Views__ViewsGroupAssignment_0 ) ) | ( ( ( rule__Views__ViewOptionAssignment_1 ) ) ( ( rule__Views__ViewOptionAssignment_1 )* ) ) )
+            // InternalDgen.g:331:1: ( ( ( rule__Views__ViewGroupAssignment_0 ) ) | ( ( ( rule__Views__ViewOptionAssignment_1 ) ) ( ( rule__Views__ViewOptionAssignment_1 )* ) ) )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -1016,24 +1016,24 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalDgen.g:332:2: ( ( rule__Views__ViewsGroupAssignment_0 ) )
+                    // InternalDgen.g:332:2: ( ( rule__Views__ViewGroupAssignment_0 ) )
                     {
-                    // InternalDgen.g:332:2: ( ( rule__Views__ViewsGroupAssignment_0 ) )
-                    // InternalDgen.g:333:3: ( rule__Views__ViewsGroupAssignment_0 )
+                    // InternalDgen.g:332:2: ( ( rule__Views__ViewGroupAssignment_0 ) )
+                    // InternalDgen.g:333:3: ( rule__Views__ViewGroupAssignment_0 )
                     {
-                     before(grammarAccess.getViewsAccess().getViewsGroupAssignment_0()); 
-                    // InternalDgen.g:334:3: ( rule__Views__ViewsGroupAssignment_0 )
-                    // InternalDgen.g:334:4: rule__Views__ViewsGroupAssignment_0
+                     before(grammarAccess.getViewsAccess().getViewGroupAssignment_0()); 
+                    // InternalDgen.g:334:3: ( rule__Views__ViewGroupAssignment_0 )
+                    // InternalDgen.g:334:4: rule__Views__ViewGroupAssignment_0
                     {
                     pushFollow(FOLLOW_2);
-                    rule__Views__ViewsGroupAssignment_0();
+                    rule__Views__ViewGroupAssignment_0();
 
                     state._fsp--;
 
 
                     }
 
-                     after(grammarAccess.getViewsAccess().getViewsGroupAssignment_0()); 
+                     after(grammarAccess.getViewsAccess().getViewGroupAssignment_0()); 
 
                     }
 
@@ -3133,9 +3133,9 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__ViewOptions__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Views__ViewsGroupAssignment_0"
-    // InternalDgen.g:1045:1: rule__Views__ViewsGroupAssignment_0 : ( ruleViewGroup ) ;
-    public final void rule__Views__ViewsGroupAssignment_0() throws RecognitionException {
+    // $ANTLR start "rule__Views__ViewGroupAssignment_0"
+    // InternalDgen.g:1045:1: rule__Views__ViewGroupAssignment_0 : ( ruleViewGroup ) ;
+    public final void rule__Views__ViewGroupAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
@@ -3146,13 +3146,13 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
             // InternalDgen.g:1050:2: ( ruleViewGroup )
             // InternalDgen.g:1051:3: ruleViewGroup
             {
-             before(grammarAccess.getViewsAccess().getViewsGroupViewGroupParserRuleCall_0_0()); 
+             before(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
             ruleViewGroup();
 
             state._fsp--;
 
-             after(grammarAccess.getViewsAccess().getViewsGroupViewGroupParserRuleCall_0_0()); 
+             after(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0()); 
 
             }
 
@@ -3171,7 +3171,7 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Views__ViewsGroupAssignment_0"
+    // $ANTLR end "rule__Views__ViewGroupAssignment_0"
 
 
     // $ANTLR start "rule__Views__ViewOptionAssignment_1"

@@ -1219,11 +1219,11 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleViews"
-    // InternalDgen.g:480:1: ruleViews returns [EObject current=null] : ( ( (lv_viewsGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ ) ;
+    // InternalDgen.g:480:1: ruleViews returns [EObject current=null] : ( ( (lv_viewGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ ) ;
     public final EObject ruleViews() throws RecognitionException {
         EObject current = null;
 
-        EObject lv_viewsGroup_0_0 = null;
+        EObject lv_viewGroup_0_0 = null;
 
         EObject lv_viewOption_1_0 = null;
 
@@ -1232,10 +1232,10 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDgen.g:486:2: ( ( ( (lv_viewsGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ ) )
-            // InternalDgen.g:487:2: ( ( (lv_viewsGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ )
+            // InternalDgen.g:486:2: ( ( ( (lv_viewGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ ) )
+            // InternalDgen.g:487:2: ( ( (lv_viewGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ )
             {
-            // InternalDgen.g:487:2: ( ( (lv_viewsGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ )
+            // InternalDgen.g:487:2: ( ( (lv_viewGroup_0_0= ruleViewGroup ) ) | ( (lv_viewOption_1_0= ruleViewOptions ) )+ )
             int alt9=2;
             int LA9_0 = input.LA(1);
 
@@ -1263,19 +1263,19 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
             }
             switch (alt9) {
                 case 1 :
-                    // InternalDgen.g:488:3: ( (lv_viewsGroup_0_0= ruleViewGroup ) )
+                    // InternalDgen.g:488:3: ( (lv_viewGroup_0_0= ruleViewGroup ) )
                     {
-                    // InternalDgen.g:488:3: ( (lv_viewsGroup_0_0= ruleViewGroup ) )
-                    // InternalDgen.g:489:4: (lv_viewsGroup_0_0= ruleViewGroup )
+                    // InternalDgen.g:488:3: ( (lv_viewGroup_0_0= ruleViewGroup ) )
+                    // InternalDgen.g:489:4: (lv_viewGroup_0_0= ruleViewGroup )
                     {
-                    // InternalDgen.g:489:4: (lv_viewsGroup_0_0= ruleViewGroup )
-                    // InternalDgen.g:490:5: lv_viewsGroup_0_0= ruleViewGroup
+                    // InternalDgen.g:489:4: (lv_viewGroup_0_0= ruleViewGroup )
+                    // InternalDgen.g:490:5: lv_viewGroup_0_0= ruleViewGroup
                     {
 
-                    					newCompositeNode(grammarAccess.getViewsAccess().getViewsGroupViewGroupParserRuleCall_0_0());
+                    					newCompositeNode(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0());
                     				
                     pushFollow(FOLLOW_2);
-                    lv_viewsGroup_0_0=ruleViewGroup();
+                    lv_viewGroup_0_0=ruleViewGroup();
 
                     state._fsp--;
 
@@ -1285,8 +1285,8 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
                     					}
                     					set(
                     						current,
-                    						"viewsGroup",
-                    						lv_viewsGroup_0_0,
+                    						"viewGroup",
+                    						lv_viewGroup_0_0,
                     						"org.xtext.mdd.Dgen.ViewGroup");
                     					afterParserOrEnumRuleCall();
                     				

@@ -30,7 +30,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute Dgen.ecore#//ViewOptions/name"/>
     </genClasses>
     <genClasses ecoreClass="Dgen.ecore#//Views">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dgen.ecore#//Views/viewsGroup"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dgen.ecore#//Views/viewGroup"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference Dgen.ecore#//Views/viewOption"/>
     </genClasses>
   </genPackages>

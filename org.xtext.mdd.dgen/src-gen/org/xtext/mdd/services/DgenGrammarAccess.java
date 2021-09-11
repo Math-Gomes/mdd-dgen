@@ -269,23 +269,23 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	public class ViewsElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mdd.Dgen.Views");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Assignment cViewsGroupAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
-		private final RuleCall cViewsGroupViewGroupParserRuleCall_0_0 = (RuleCall)cViewsGroupAssignment_0.eContents().get(0);
+		private final Assignment cViewGroupAssignment_0 = (Assignment)cAlternatives.eContents().get(0);
+		private final RuleCall cViewGroupViewGroupParserRuleCall_0_0 = (RuleCall)cViewGroupAssignment_0.eContents().get(0);
 		private final Assignment cViewOptionAssignment_1 = (Assignment)cAlternatives.eContents().get(1);
 		private final RuleCall cViewOptionViewOptionsParserRuleCall_1_0 = (RuleCall)cViewOptionAssignment_1.eContents().get(0);
 		
 		//Views:
-		//    (viewsGroup=ViewGroup) | (viewOption+=ViewOptions)+;
+		//    (viewGroup=ViewGroup) | (viewOption+=ViewOptions)+;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(viewsGroup=ViewGroup) | (viewOption+=ViewOptions)+
+		//(viewGroup=ViewGroup) | (viewOption+=ViewOptions)+
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//(viewsGroup=ViewGroup)
-		public Assignment getViewsGroupAssignment_0() { return cViewsGroupAssignment_0; }
+		//(viewGroup=ViewGroup)
+		public Assignment getViewGroupAssignment_0() { return cViewGroupAssignment_0; }
 		
 		//ViewGroup
-		public RuleCall getViewsGroupViewGroupParserRuleCall_0_0() { return cViewsGroupViewGroupParserRuleCall_0_0; }
+		public RuleCall getViewGroupViewGroupParserRuleCall_0_0() { return cViewGroupViewGroupParserRuleCall_0_0; }
 		
 		//(viewOption+=ViewOptions)+
 		public Assignment getViewOptionAssignment_1() { return cViewOptionAssignment_1; }
@@ -424,7 +424,7 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//Views:
-	//    (viewsGroup=ViewGroup) | (viewOption+=ViewOptions)+;
+	//    (viewGroup=ViewGroup) | (viewOption+=ViewOptions)+;
 	public ViewsElements getViewsAccess() {
 		return pViews;
 	}

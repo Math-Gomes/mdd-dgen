@@ -32,7 +32,7 @@ import org.xtext.mdd.dgen.Views;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.mdd.dgen.impl.ViewsImpl#getViewsGroup <em>Views Group</em>}</li>
+ *   <li>{@link org.xtext.mdd.dgen.impl.ViewsImpl#getViewGroup <em>View Group</em>}</li>
  *   <li>{@link org.xtext.mdd.dgen.impl.ViewsImpl#getViewOption <em>View Option</em>}</li>
  * </ul>
  *
@@ -41,14 +41,14 @@ import org.xtext.mdd.dgen.Views;
 public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
 {
   /**
-   * The cached value of the '{@link #getViewsGroup() <em>Views Group</em>}' containment reference.
+   * The cached value of the '{@link #getViewGroup() <em>View Group</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getViewsGroup()
+   * @see #getViewGroup()
    * @generated
    * @ordered
    */
-  protected ViewGroup viewsGroup;
+  protected ViewGroup viewGroup;
 
   /**
    * The cached value of the '{@link #getViewOption() <em>View Option</em>}' containment reference list.
@@ -87,9 +87,9 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
    * @generated
    */
   @Override
-  public ViewGroup getViewsGroup()
+  public ViewGroup getViewGroup()
   {
-    return viewsGroup;
+    return viewGroup;
   }
 
   /**
@@ -97,13 +97,13 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetViewsGroup(ViewGroup newViewsGroup, NotificationChain msgs)
+  public NotificationChain basicSetViewGroup(ViewGroup newViewGroup, NotificationChain msgs)
   {
-    ViewGroup oldViewsGroup = viewsGroup;
-    viewsGroup = newViewsGroup;
+    ViewGroup oldViewGroup = viewGroup;
+    viewGroup = newViewGroup;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DgenPackage.VIEWS__VIEWS_GROUP, oldViewsGroup, newViewsGroup);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DgenPackage.VIEWS__VIEW_GROUP, oldViewGroup, newViewGroup);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -115,20 +115,20 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
    * @generated
    */
   @Override
-  public void setViewsGroup(ViewGroup newViewsGroup)
+  public void setViewGroup(ViewGroup newViewGroup)
   {
-    if (newViewsGroup != viewsGroup)
+    if (newViewGroup != viewGroup)
     {
       NotificationChain msgs = null;
-      if (viewsGroup != null)
-        msgs = ((InternalEObject)viewsGroup).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DgenPackage.VIEWS__VIEWS_GROUP, null, msgs);
-      if (newViewsGroup != null)
-        msgs = ((InternalEObject)newViewsGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DgenPackage.VIEWS__VIEWS_GROUP, null, msgs);
-      msgs = basicSetViewsGroup(newViewsGroup, msgs);
+      if (viewGroup != null)
+        msgs = ((InternalEObject)viewGroup).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DgenPackage.VIEWS__VIEW_GROUP, null, msgs);
+      if (newViewGroup != null)
+        msgs = ((InternalEObject)newViewGroup).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DgenPackage.VIEWS__VIEW_GROUP, null, msgs);
+      msgs = basicSetViewGroup(newViewGroup, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DgenPackage.VIEWS__VIEWS_GROUP, newViewsGroup, newViewsGroup));
+      eNotify(new ENotificationImpl(this, Notification.SET, DgenPackage.VIEWS__VIEW_GROUP, newViewGroup, newViewGroup));
   }
 
   /**
@@ -156,8 +156,8 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
   {
     switch (featureID)
     {
-      case DgenPackage.VIEWS__VIEWS_GROUP:
-        return basicSetViewsGroup(null, msgs);
+      case DgenPackage.VIEWS__VIEW_GROUP:
+        return basicSetViewGroup(null, msgs);
       case DgenPackage.VIEWS__VIEW_OPTION:
         return ((InternalEList<?>)getViewOption()).basicRemove(otherEnd, msgs);
     }
@@ -174,8 +174,8 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
   {
     switch (featureID)
     {
-      case DgenPackage.VIEWS__VIEWS_GROUP:
-        return getViewsGroup();
+      case DgenPackage.VIEWS__VIEW_GROUP:
+        return getViewGroup();
       case DgenPackage.VIEWS__VIEW_OPTION:
         return getViewOption();
     }
@@ -193,8 +193,8 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
   {
     switch (featureID)
     {
-      case DgenPackage.VIEWS__VIEWS_GROUP:
-        setViewsGroup((ViewGroup)newValue);
+      case DgenPackage.VIEWS__VIEW_GROUP:
+        setViewGroup((ViewGroup)newValue);
         return;
       case DgenPackage.VIEWS__VIEW_OPTION:
         getViewOption().clear();
@@ -214,8 +214,8 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
   {
     switch (featureID)
     {
-      case DgenPackage.VIEWS__VIEWS_GROUP:
-        setViewsGroup((ViewGroup)null);
+      case DgenPackage.VIEWS__VIEW_GROUP:
+        setViewGroup((ViewGroup)null);
         return;
       case DgenPackage.VIEWS__VIEW_OPTION:
         getViewOption().clear();
@@ -234,8 +234,8 @@ public class ViewsImpl extends MinimalEObjectImpl.Container implements Views
   {
     switch (featureID)
     {
-      case DgenPackage.VIEWS__VIEWS_GROUP:
-        return viewsGroup != null;
+      case DgenPackage.VIEWS__VIEW_GROUP:
+        return viewGroup != null;
       case DgenPackage.VIEWS__VIEW_OPTION:
         return viewOption != null && !viewOption.isEmpty();
     }
