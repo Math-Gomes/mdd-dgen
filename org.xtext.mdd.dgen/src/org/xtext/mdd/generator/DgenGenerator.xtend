@@ -19,10 +19,16 @@ class DgenGenerator extends AbstractGenerator {
 	@Inject DjangoBaseGenerator djangoBaseGenerator
 	@Inject DjangoModelsGenerator djangoModelsGenerator
 	@Inject DjangoViewsGenerator djangoViewsGenerator
+	@Inject DjangoUrlsGenerator djangoUrlsGenerator
+	@Inject DjangoHtmlGenerator djangoHtmlGenerator
+	@Inject DjangoTemplateGenerator djangoTemplateGenerator
 	
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		djangoBaseGenerator.doGenerate(resource, fsa, context);
 		djangoModelsGenerator.doGenerate(resource, fsa, context);
 		djangoViewsGenerator.doGenerate(resource, fsa, context);
+		djangoUrlsGenerator.doGenerate(resource, fsa, context);
+		djangoHtmlGenerator.doGenerate(resource, fsa, context);
+		djangoTemplateGenerator.doGenerate(resource, fsa, context);
 	}
 }

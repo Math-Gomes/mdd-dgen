@@ -94,27 +94,27 @@ public class DjangoModelsGenerator extends AbstractGenerator {
         String _name_1 = f.getType().getName();
         boolean _equals_1 = Objects.equal(_name_1, "Int");
         if (_equals_1) {
-          _builder.append("models.models.BigIntegerField()");
+          _builder.append("models.BigIntegerField()");
         } else {
           String _name_2 = f.getType().getName();
           boolean _equals_2 = Objects.equal(_name_2, "Float");
           if (_equals_2) {
-            _builder.append("models.models.FloatField()");
+            _builder.append("models.FloatField()");
           } else {
             String _name_3 = f.getType().getName();
             boolean _equals_3 = Objects.equal(_name_3, "Bool");
             if (_equals_3) {
-              _builder.append("models.models.BooleanField()");
+              _builder.append("models.BooleanField()");
             } else {
               String _name_4 = f.getType().getName();
               boolean _equals_4 = Objects.equal(_name_4, "Date");
               if (_equals_4) {
-                _builder.append("models.models.DateTimeField(default=timezone.now)");
+                _builder.append("models.DateTimeField(default=timezone.now)");
               } else {
-                _builder.append("models.ForeignKey(");
+                _builder.append("models.ForeignKey(\'");
                 String _name_5 = f.getType().getName();
                 _builder.append(_name_5);
-                _builder.append(", on_delete=models.CASCADE)");
+                _builder.append("\', on_delete=models.CASCADE)");
               }
             }
           }

@@ -66,6 +66,10 @@ public class DjangoViewsGenerator extends AbstractGenerator {
           String _xblockexpression = null;
           {
             final String group = entity.getViews().getViewGroup().getName();
+            int _length = group.length();
+            boolean _greaterThan = (_length > 0);
+            if (_greaterThan) {
+            }
             _xblockexpression = "group";
           }
           _xtrycatchfinallyexpression = _xblockexpression;

@@ -14,6 +14,8 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		fsa.generateFile("project/urls.py", resource.createUrls);
 		fsa.generateFile("project/wsgi.py", resource.createWsgi);
 		
+		fsa.generateFile("requirements.txt", resource.createRequirements)
+		
 		fsa.generateFile("scripts/init.sh", resource.createInit);
 		
 		fsa.generateFile("app/admin.py", resource.createAdmin);
@@ -23,6 +25,15 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		fsa.generateFile("app/views.py", resource.createViews);
 		
 	}
+	
+	private def createRequirements(Resource resource)'''
+		asgiref==3.4.1
+		Django==3.2.7
+		django-crispy-forms==1.12.0
+		pkg_resources==0.0.0
+		pytz==2021.1
+		sqlparse==0.4.1
+	'''
 	
 	private def createInit(Resource resource)'''
 		#!/bin/bash
@@ -122,6 +133,7 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		    'django.contrib.sessions',
 		    'django.contrib.messages',
 		    'django.contrib.staticfiles',
+		    'crispy_forms',
 		    'app',
 		]
 		
@@ -229,10 +241,11 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		    2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 		"""
 		from django.contrib import admin
-		from django.urls import path
+		from django.urls import path, include
 		
 		urlpatterns = [
 		    path('admin/', admin.site.urls),
+		    path('', include('app.urls')),
 		]
 		
 	'''

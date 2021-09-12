@@ -15,12 +15,30 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     fsa.generateFile("project/settings.py", this.createSettings(resource));
     fsa.generateFile("project/urls.py", this.createUrls(resource));
     fsa.generateFile("project/wsgi.py", this.createWsgi(resource));
+    fsa.generateFile("requirements.txt", this.createRequirements(resource));
     fsa.generateFile("scripts/init.sh", this.createInit(resource));
     fsa.generateFile("app/admin.py", this.createAdmin(resource));
     fsa.generateFile("app/apps.py", this.createApps(resource));
     fsa.generateFile("app/models.py", this.createModels(resource));
     fsa.generateFile("app/tests.py", this.createTests(resource));
     fsa.generateFile("app/views.py", this.createViews(resource));
+  }
+  
+  private CharSequence createRequirements(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("asgiref==3.4.1");
+    _builder.newLine();
+    _builder.append("Django==3.2.7");
+    _builder.newLine();
+    _builder.append("django-crispy-forms==1.12.0");
+    _builder.newLine();
+    _builder.append("pkg_resources==0.0.0");
+    _builder.newLine();
+    _builder.append("pytz==2021.1");
+    _builder.newLine();
+    _builder.append("sqlparse==0.4.1");
+    _builder.newLine();
+    return _builder;
   }
   
   private CharSequence createInit(final Resource resource) {
@@ -207,6 +225,9 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("    ");
     _builder.append("\'django.contrib.staticfiles\',");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("\'crispy_forms\',");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("\'app\',");
@@ -442,13 +463,16 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("from django.contrib import admin");
     _builder.newLine();
-    _builder.append("from django.urls import path");
+    _builder.append("from django.urls import path, include");
     _builder.newLine();
     _builder.newLine();
     _builder.append("urlpatterns = [");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("path(\'admin/\', admin.site.urls),");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("path(\'\', include(\'app.urls\')),");
     _builder.newLine();
     _builder.append("]");
     _builder.newLine();

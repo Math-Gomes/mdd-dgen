@@ -22,73 +22,74 @@ class DjangoViewsGenerator extends AbstractGenerator {
         from django.views.generic.edit import CreateView, UpdateView, DeleteView
         from django.views.generic.list import ListView
         from django.contrib.messages.views import SuccessMessageMixin
-        from .models import Â«FOR e : resource.allContents.toIterable.filter(Entity)Â» Â«e.fullyQualifiedNameÂ», Â«ENDFORÂ»
+        from .models import «FOR e : resource.allContents.toIterable.filter(Entity)» «e.fullyQualifiedName», «ENDFOR»
         from django.urls import reverse_lazy
         from django.contrib import messages
 
-        Â«FOR entity : resource.allContents.toIterable.filter(Entity)Â»
-        	Â«
+        «FOR entity : resource.allContents.toIterable.filter(Entity)»
+        	«
         	val what = try {
 			    val group = entity.views.viewGroup.name
-			    'group'    
+			    if (group.length > 0) {}
+			    'group'
 		  	} catch (Exception e) {
 		    	'option'
 		  	}
-        	Â»
-        	Â«IF what == 'group'Â»
-        		Â«IF entity.views.viewGroup.name == 'All'Â»
-				    Â«entity.createViewÂ»Â«entity.readViewÂ»Â«entity.updateViewÂ»Â«entity.deleteViewÂ»
-				Â«ENDIFÂ»
-            Â«ELSEÂ»
-                Â«FOR opt : entity.views.viewOptionÂ»
-                    Â«IF opt.name == 'Create'Â»
-                        Â«entity.createViewÂ»
-                    Â«ENDIFÂ»
-                    Â«IF opt.name == 'Read'Â»
-                        Â«entity.readViewÂ»
-                    Â«ENDIFÂ»
-                    Â«IF opt.name == 'Update'Â»
-                        Â«entity.updateViewÂ»
-                    Â«ENDIFÂ»
-                    Â«IF opt.name == 'Delete'Â»
-                        Â«entity.deleteViewÂ»
-                    Â«ENDIFÂ»
-                Â«ENDFORÂ»
-            Â«ENDIFÂ»
-		Â«ENDFORÂ»
+        	»
+        	«IF what == 'group'»
+        		«IF entity.views.viewGroup.name == 'All'»
+				    «entity.createView»«entity.readView»«entity.updateView»«entity.deleteView»
+				«ENDIF»
+            «ELSE»
+                «FOR opt : entity.views.viewOption»
+                    «IF opt.name == 'Create'»
+                        «entity.createView»
+                    «ENDIF»
+                    «IF opt.name == 'Read'»
+                        «entity.readView»
+                    «ENDIF»
+                    «IF opt.name == 'Update'»
+                        «entity.updateView»
+                    «ENDIF»
+                    «IF opt.name == 'Delete'»
+                        «entity.deleteView»
+                    «ENDIF»
+                «ENDFOR»
+            «ENDIF»
+		«ENDFOR»
     '''
     
     private def createView(Entity e)'''
-        class Â«e.fullyQualifiedNameÂ»Create(CreateView):
-            model = Â«e.fullyQualifiedNameÂ»
+        class «e.fullyQualifiedName»Create(CreateView):
+            model = «e.fullyQualifiedName»
             fields = '__all__'
-            success_url = reverse_lazy('Â«e.name.toLowerCaseÂ»_list')
+            success_url = reverse_lazy('«e.name.toLowerCase»_list')
 
     '''
 
     private def readView(Entity e) '''
-        class Â«e.fullyQualifiedNameÂ»Read(ListView):
-            model = Â«e.fullyQualifiedNameÂ»
-            template_name = "app/Â«e.name.toLowerCaseÂ»_list.html"
+        class «e.fullyQualifiedName»Read(ListView):
+            model = «e.fullyQualifiedName»
+            template_name = "app/«e.name.toLowerCase»_list.html"
 
             def get_querySet(self):
-                return {'rows' : Â«e.fullyQualifiedNameÂ».objects.filter(),
-                        'cols' : [Â«FOR f : e.featuresÂ»'Â«f.nameÂ»', Â«ENDFORÂ»'Acoes']}
+                return {'rows' : «e.fullyQualifiedName».objects.filter(),
+                        'cols' : [«FOR f : e.features»'«f.name»', «ENDFOR»'Acoes']}
 
     '''
 
     private def updateView(Entity e)'''
-        class Â«e.fullyQualifiedNameÂ»Update(UpdateView):
-            model = Â«e.fullyQualifiedNameÂ»
+        class «e.fullyQualifiedName»Update(UpdateView):
+            model = «e.fullyQualifiedName»
             fields = '__all__'
-            success_url = reverse_lazy('Â«e.name.toLowerCaseÂ»_list')
+            success_url = reverse_lazy('«e.name.toLowerCase»_list')
 
     '''
 
     private def deleteView(Entity e)'''
-        class Â«e.fullyQualifiedNameÂ»Delete(DeleteView):
-            model = Â«e.fullyQualifiedNameÂ»
-            sucess_url = reverse_lazy('Â«e.name.toLowerCaseÂ»_list')
+        class «e.fullyQualifiedName»Delete(DeleteView):
+            model = «e.fullyQualifiedName»
+            sucess_url = reverse_lazy('«e.name.toLowerCase»_list')
 
     '''
 }

@@ -22,32 +22,32 @@ class DjangoModelsGenerator extends AbstractGenerator {
 		from django.db import models
 		from django.utils import timezone
 		
-		Â«FOR entity : resource.allContents.toIterable.filter(Entity) Â»
-			Â«entity.createClassÂ»
+		«FOR entity : resource.allContents.toIterable.filter(Entity) »
+			«entity.createClass»
 			
-		Â«ENDFORÂ»
+		«ENDFOR»
 	'''
 	
 	private def createClass(Entity e)'''     
-        class Â«e.nameÂ»Â«
+        class «e.name»«
         	IF e.superType !== null
-        		Â»(Â«e.superType.fullyQualifiedNameÂ»)Â«
+        		»(«e.superType.fullyQualifiedName»)«
             ELSE
-            	Â»(models.Model)Â«
-            ENDIFÂ»:
-            Â«FOR feature : e.featuresÂ»
-                Â«feature.createAttributesÂ»
-            Â«ENDFORÂ»
+            	»(models.Model)«
+            ENDIF»:
+            «FOR feature : e.features»
+                «feature.createAttributes»
+            «ENDFOR»
     '''
 
     private def createAttributes(Feature f)'''
-        Â«f.name.toLowerCaseÂ» = Â«
-        IF     f.type.name == "String" Â»models.CharField(max_length=200)Â«
-        ELSEIF f.type.name == "Int"    Â»models.models.BigIntegerField()Â«
-        ELSEIF f.type.name == "Float"  Â»models.models.FloatField()Â«
-        ELSEIF f.type.name == "Bool"   Â»models.models.BooleanField()Â«
-        ELSEIF f.type.name == "Date"   Â»models.models.DateTimeField(default=timezone.now)Â«
-        ELSE                           Â»models.ForeignKey(Â«f.type.nameÂ», on_delete=models.CASCADE)Â«
-        ENDIFÂ»
+        «f.name.toLowerCase» = «
+        IF     f.type.name == "String" »models.CharField(max_length=200)«
+        ELSEIF f.type.name == "Int"    »models.BigIntegerField()«
+        ELSEIF f.type.name == "Float"  »models.FloatField()«
+        ELSEIF f.type.name == "Bool"   »models.BooleanField()«
+        ELSEIF f.type.name == "Date"   »models.DateTimeField(default=timezone.now)«
+        ELSE                           »models.ForeignKey('«f.type.name»', on_delete=models.CASCADE)«
+        ENDIF»
     '''
 }
