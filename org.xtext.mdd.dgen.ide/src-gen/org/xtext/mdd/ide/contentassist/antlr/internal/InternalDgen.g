@@ -559,9 +559,16 @@ rule__Entity__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEntityAccess().getFeaturesAssignment_5()); }
-	(rule__Entity__FeaturesAssignment_5)*
-	{ after(grammarAccess.getEntityAccess().getFeaturesAssignment_5()); }
+	(
+		{ before(grammarAccess.getEntityAccess().getFeaturesAssignment_5()); }
+		(rule__Entity__FeaturesAssignment_5)
+		{ after(grammarAccess.getEntityAccess().getFeaturesAssignment_5()); }
+	)
+	(
+		{ before(grammarAccess.getEntityAccess().getFeaturesAssignment_5()); }
+		(rule__Entity__FeaturesAssignment_5)*
+		{ after(grammarAccess.getEntityAccess().getFeaturesAssignment_5()); }
+	)
 )
 ;
 finally {

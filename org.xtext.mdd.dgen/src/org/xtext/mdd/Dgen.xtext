@@ -14,7 +14,7 @@ DataType:
 Entity:
     views=Views
     'entity' name=ID ('extends' superType=[Entity])? '{'
-        (features+=Feature)*
+        (features+=Feature)+
     '}';
 
 Feature:

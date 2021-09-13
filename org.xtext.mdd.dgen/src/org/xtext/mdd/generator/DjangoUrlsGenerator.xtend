@@ -18,12 +18,14 @@ class DjangoUrlsGenerator extends AbstractGenerator {
         from django.conf.urls import url
 
         from .views import (
+            Home,
             «FOR entity : resource.allContents.toIterable.filter(Entity)»
                 «entity.importViews»
             «ENDFOR»
         )
         
         urlpatterns = [
+            path('', Home.as_view(), name='home'),
             «FOR entity : resource.allContents.toIterable.filter(Entity)»«entity.path»«ENDFOR»
         ]
     '''

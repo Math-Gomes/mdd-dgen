@@ -475,7 +475,7 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEntity"
-    // InternalDgen.g:184:1: ruleEntity returns [EObject current=null] : ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )* otherlv_7= '}' ) ;
+    // InternalDgen.g:184:1: ruleEntity returns [EObject current=null] : ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )+ otherlv_7= '}' ) ;
     public final EObject ruleEntity() throws RecognitionException {
         EObject current = null;
 
@@ -494,11 +494,11 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDgen.g:190:2: ( ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )* otherlv_7= '}' ) )
-            // InternalDgen.g:191:2: ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )* otherlv_7= '}' )
+            // InternalDgen.g:190:2: ( ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )+ otherlv_7= '}' ) )
+            // InternalDgen.g:191:2: ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )+ otherlv_7= '}' )
             {
-            // InternalDgen.g:191:2: ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )* otherlv_7= '}' )
-            // InternalDgen.g:192:3: ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )* otherlv_7= '}'
+            // InternalDgen.g:191:2: ( ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )+ otherlv_7= '}' )
+            // InternalDgen.g:192:3: ( (lv_views_0_0= ruleViews ) ) otherlv_1= 'entity' ( (lv_name_2_0= RULE_ID ) ) (otherlv_3= 'extends' ( (otherlv_4= RULE_ID ) ) )? otherlv_5= '{' ( (lv_features_6_0= ruleFeature ) )+ otherlv_7= '}'
             {
             // InternalDgen.g:192:3: ( (lv_views_0_0= ruleViews ) )
             // InternalDgen.g:193:4: (lv_views_0_0= ruleViews )
@@ -607,7 +607,8 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
 
             			newLeafNode(otherlv_5, grammarAccess.getEntityAccess().getLeftCurlyBracketKeyword_4());
             		
-            // InternalDgen.g:256:3: ( (lv_features_6_0= ruleFeature ) )*
+            // InternalDgen.g:256:3: ( (lv_features_6_0= ruleFeature ) )+
+            int cnt4=0;
             loop4:
             do {
                 int alt4=2;
@@ -628,7 +629,7 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
 
             	    					newCompositeNode(grammarAccess.getEntityAccess().getFeaturesFeatureParserRuleCall_5_0());
             	    				
-            	    pushFollow(FOLLOW_8);
+            	    pushFollow(FOLLOW_9);
             	    lv_features_6_0=ruleFeature();
 
             	    state._fsp--;
@@ -652,8 +653,12 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop4;
+            	    if ( cnt4 >= 1 ) break loop4;
+                        EarlyExitException eee =
+                            new EarlyExitException(4, input);
+                        throw eee;
                 }
+                cnt4++;
             } while (true);
 
             otherlv_7=(Token)match(input,15,FOLLOW_2); 
@@ -777,7 +782,7 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
             // InternalDgen.g:313:4: (lv_name_1_0= RULE_ID )
             // InternalDgen.g:314:5: lv_name_1_0= RULE_ID
             {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_9); 
+            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_10); 
 
             					newLeafNode(lv_name_1_0, grammarAccess.getFeatureAccess().getNameIDTerminalRuleCall_1_0());
             				
@@ -899,7 +904,7 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
             // InternalDgen.g:365:2: (otherlv_0= '@' ( ( (lv_name_1_1= 'All' | lv_name_1_2= 'None' ) ) ) )
             // InternalDgen.g:366:3: otherlv_0= '@' ( ( (lv_name_1_1= 'All' | lv_name_1_2= 'None' ) ) )
             {
-            otherlv_0=(Token)match(input,18,FOLLOW_10); 
+            otherlv_0=(Token)match(input,18,FOLLOW_11); 
 
             			newLeafNode(otherlv_0, grammarAccess.getViewGroupAccess().getCommercialAtKeyword_0());
             		
@@ -1046,7 +1051,7 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
             // InternalDgen.g:415:2: (otherlv_0= '@' ( ( (lv_name_1_1= 'Create' | lv_name_1_2= 'Read' | lv_name_1_3= 'Update' | lv_name_1_4= 'Delete' ) ) ) )
             // InternalDgen.g:416:3: otherlv_0= '@' ( ( (lv_name_1_1= 'Create' | lv_name_1_2= 'Read' | lv_name_1_3= 'Update' | lv_name_1_4= 'Delete' ) ) )
             {
-            otherlv_0=(Token)match(input,18,FOLLOW_11); 
+            otherlv_0=(Token)match(input,18,FOLLOW_12); 
 
             			newLeafNode(otherlv_0, grammarAccess.getViewOptionsAccess().getCommercialAtKeyword_0());
             		
@@ -1392,9 +1397,10 @@ public class InternalDgenParser extends AbstractInternalAntlrParser {
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000001000L});
     public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000006000L});
     public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000018010L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000020000L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000180000L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000001E00000L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000010010L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000018010L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000180000L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000001E00000L});
 
 }

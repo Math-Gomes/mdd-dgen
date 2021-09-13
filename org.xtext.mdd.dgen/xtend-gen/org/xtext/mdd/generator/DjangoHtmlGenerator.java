@@ -188,14 +188,19 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("            ");
     _builder.append("<tr>");
     _builder.newLine();
+    {
+      EList<Feature> _features = e.getFeatures();
+      for(final Feature f : _features) {
+        _builder.append("                ");
+        _builder.append("<th>");
+        String _name_1 = f.getName();
+        _builder.append(_name_1, "                ");
+        _builder.append("</th>");
+        _builder.newLineIfNotEmpty();
+      }
+    }
     _builder.append("                ");
-    _builder.append("{% for column in object_list.cols %}");
-    _builder.newLine();
-    _builder.append("                    ");
-    _builder.append("<th>{{ column }}</th>");
-    _builder.newLine();
-    _builder.append("                ");
-    _builder.append("{% endfor %}");
+    _builder.append("<th>Ações</th>");
     _builder.newLine();
     _builder.append("            ");
     _builder.append("</tr>");
@@ -210,21 +215,24 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("{% for ");
     String _lowerCase_1 = e.getName().toLowerCase();
     _builder.append(_lowerCase_1, "            ");
-    _builder.append(" in object_list.rows %}");
+    _builder.append(" in ");
+    String _lowerCase_2 = e.getName().toLowerCase();
+    _builder.append(_lowerCase_2, "            ");
+    _builder.append("_list %}");
     _builder.newLineIfNotEmpty();
     _builder.append("                ");
     _builder.append("<tr>");
     _builder.newLine();
     {
-      EList<Feature> _features = e.getFeatures();
-      for(final Feature f : _features) {
+      EList<Feature> _features_1 = e.getFeatures();
+      for(final Feature f_1 : _features_1) {
         _builder.append("                    ");
         _builder.append("<td>{{ ");
-        String _lowerCase_2 = e.getName().toLowerCase();
-        _builder.append(_lowerCase_2, "                    ");
+        String _lowerCase_3 = e.getName().toLowerCase();
+        _builder.append(_lowerCase_3, "                    ");
         _builder.append(".");
-        String _name_1 = f.getName();
-        _builder.append(_name_1, "                    ");
+        String _lowerCase_4 = f_1.getName().toLowerCase();
+        _builder.append(_lowerCase_4, "                    ");
         _builder.append(" }}</td>");
         _builder.newLineIfNotEmpty();
       }
@@ -233,23 +241,92 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("<td>");
     _builder.newLine();
     _builder.append("                        ");
-    _builder.append("<a href=\"{% url \'");
-    String _lowerCase_3 = e.getName().toLowerCase();
-    _builder.append(_lowerCase_3, "                        ");
-    _builder.append("_update\' ");
-    String _lowerCase_4 = e.getName().toLowerCase();
-    _builder.append(_lowerCase_4, "                        ");
-    _builder.append(".pk %}\">Atualizar</a>");
+    String _xtrycatchfinallyexpression = null;
+    try {
+      String _xblockexpression = null;
+      {
+        final String group = e.getViews().getViewGroup().getName();
+        int _length = group.length();
+        boolean _greaterThan = (_length > 0);
+        if (_greaterThan) {
+        }
+        _xblockexpression = "group";
+      }
+      _xtrycatchfinallyexpression = _xblockexpression;
+    } catch (final Throwable _t) {
+      if (_t instanceof Exception) {
+        _xtrycatchfinallyexpression = "option";
+      } else {
+        throw Exceptions.sneakyThrow(_t);
+      }
+    }
+    final String what = _xtrycatchfinallyexpression;
     _builder.newLineIfNotEmpty();
-    _builder.append("                        ");
-    _builder.append("<a href=\"{% url \'");
-    String _lowerCase_5 = e.getName().toLowerCase();
-    _builder.append(_lowerCase_5, "                        ");
-    _builder.append("_delete\' ");
-    String _lowerCase_6 = e.getName().toLowerCase();
-    _builder.append(_lowerCase_6, "                        ");
-    _builder.append(".pk %}\">Deletar</a>");
-    _builder.newLineIfNotEmpty();
+    {
+      boolean _equals = Objects.equal(what, "group");
+      if (_equals) {
+        {
+          String _name_2 = e.getViews().getViewGroup().getName();
+          boolean _equals_1 = Objects.equal(_name_2, "All");
+          if (_equals_1) {
+            _builder.append("                        ");
+            _builder.append("<a href=\"{% url \'");
+            String _lowerCase_5 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_5, "                        ");
+            _builder.append("_update\' ");
+            String _lowerCase_6 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_6, "                        ");
+            _builder.append(".pk %}\">Atualizar</a>");
+            _builder.newLineIfNotEmpty();
+            _builder.append("                        ");
+            _builder.append("<a href=\"{% url \'");
+            String _lowerCase_7 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_7, "                        ");
+            _builder.append("_delete\' ");
+            String _lowerCase_8 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_8, "                        ");
+            _builder.append(".pk %}\">Deletar</a>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      } else {
+        {
+          EList<ViewOptions> _viewOption = e.getViews().getViewOption();
+          for(final ViewOptions opt : _viewOption) {
+            {
+              String _name_3 = opt.getName();
+              boolean _equals_2 = Objects.equal(_name_3, "Update");
+              if (_equals_2) {
+                _builder.append("                        ");
+                _builder.append("<a href=\"{% url \'");
+                String _lowerCase_9 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_9, "                        ");
+                _builder.append("_update\' ");
+                String _lowerCase_10 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_10, "                        ");
+                _builder.append(".pk %}\">Atualizar</a>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+            {
+              String _name_4 = opt.getName();
+              boolean _equals_3 = Objects.equal(_name_4, "Delete");
+              if (_equals_3) {
+                _builder.append("                        ");
+                _builder.append("<a href=\"{% url \'");
+                String _lowerCase_11 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_11, "                        ");
+                _builder.append("_delete\' ");
+                String _lowerCase_12 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_12, "                        ");
+                _builder.append(".pk %}\">Deletar</a>");
+                _builder.newLineIfNotEmpty();
+              }
+            }
+          }
+        }
+      }
+    }
     _builder.append("                    ");
     _builder.append("</td>");
     _builder.newLine();
@@ -287,10 +364,13 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("<form action=\"\" method=\"post\">{% csrf_token %}");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("<p>Tem certeza que deseja deletar a ");
+    _builder.append("<p>Tem certeza que deseja deletar este(a) ");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
-    _builder.append(" \"{{ object.name }}\"?</p>");
+    _builder.append(" \"{{ object.");
+    String _name = e.getFeatures().get(0).getName();
+    _builder.append(_name, "    ");
+    _builder.append(" }}\"?</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("<input type=\"submit\" value=\"Confirm\" />");
@@ -299,7 +379,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("<button type=\'button\' onclick=\"window.location.href={% url \'");
     String _lowerCase_1 = e.getName().toLowerCase();
     _builder.append(_lowerCase_1, "    ");
-    _builder.append("_list\' %}\">No</button>");
+    _builder.append("_read\' %}\">No</button>");
     _builder.newLineIfNotEmpty();
     _builder.append("</form>");
     _builder.newLine();

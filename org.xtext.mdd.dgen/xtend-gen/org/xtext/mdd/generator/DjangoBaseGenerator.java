@@ -55,6 +55,10 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("pip install -r requirements.txt");
     _builder.newLine();
+    _builder.append("python manage.py makemigrations app");
+    _builder.newLine();
+    _builder.append("python manage.py migrate");
+    _builder.newLine();
     _builder.append("deactivate");
     _builder.newLine();
     _builder.newLine();
@@ -419,6 +423,9 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("DEFAULT_AUTO_FIELD = \'django.db.models.BigAutoField\'");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("CRISPY_TEMPLATE_PACK = \'bootstrap4\'");
     _builder.newLine();
     return _builder;
   }

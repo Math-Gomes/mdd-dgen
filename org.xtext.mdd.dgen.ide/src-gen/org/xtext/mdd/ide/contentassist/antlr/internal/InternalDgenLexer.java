@@ -343,10 +343,10 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1075:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // InternalDgen.g:1075:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalDgen.g:1082:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalDgen.g:1082:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // InternalDgen.g:1075:11: ( '^' )?
+            // InternalDgen.g:1082:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -355,7 +355,7 @@ public class InternalDgenLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // InternalDgen.g:1075:11: '^'
+                    // InternalDgen.g:1082:11: '^'
                     {
                     match('^'); 
 
@@ -373,7 +373,7 @@ public class InternalDgenLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // InternalDgen.g:1075:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalDgen.g:1082:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -422,10 +422,10 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1077:10: ( ( '0' .. '9' )+ )
-            // InternalDgen.g:1077:12: ( '0' .. '9' )+
+            // InternalDgen.g:1084:10: ( ( '0' .. '9' )+ )
+            // InternalDgen.g:1084:12: ( '0' .. '9' )+
             {
-            // InternalDgen.g:1077:12: ( '0' .. '9' )+
+            // InternalDgen.g:1084:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -439,7 +439,7 @@ public class InternalDgenLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // InternalDgen.g:1077:13: '0' .. '9'
+            	    // InternalDgen.g:1084:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -471,10 +471,10 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1079:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // InternalDgen.g:1079:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalDgen.g:1086:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalDgen.g:1086:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // InternalDgen.g:1079:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalDgen.g:1086:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -492,10 +492,10 @@ public class InternalDgenLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // InternalDgen.g:1079:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalDgen.g:1086:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // InternalDgen.g:1079:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalDgen.g:1086:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -511,7 +511,7 @@ public class InternalDgenLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // InternalDgen.g:1079:21: '\\\\' .
+                    	    // InternalDgen.g:1086:21: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -519,7 +519,7 @@ public class InternalDgenLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalDgen.g:1079:28: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalDgen.g:1086:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -544,10 +544,10 @@ public class InternalDgenLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // InternalDgen.g:1079:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalDgen.g:1086:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // InternalDgen.g:1079:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalDgen.g:1086:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -563,7 +563,7 @@ public class InternalDgenLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // InternalDgen.g:1079:54: '\\\\' .
+                    	    // InternalDgen.g:1086:54: '\\\\' .
                     	    {
                     	    match('\\'); 
                     	    matchAny(); 
@@ -571,7 +571,7 @@ public class InternalDgenLexer extends Lexer {
                     	    }
                     	    break;
                     	case 2 :
-                    	    // InternalDgen.g:1079:61: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalDgen.g:1086:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -614,12 +614,12 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1081:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // InternalDgen.g:1081:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalDgen.g:1088:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalDgen.g:1088:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // InternalDgen.g:1081:24: ( options {greedy=false; } : . )*
+            // InternalDgen.g:1088:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -644,7 +644,7 @@ public class InternalDgenLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // InternalDgen.g:1081:52: .
+            	    // InternalDgen.g:1088:52: .
             	    {
             	    matchAny(); 
 
@@ -674,12 +674,12 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1083:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // InternalDgen.g:1083:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalDgen.g:1090:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalDgen.g:1090:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // InternalDgen.g:1083:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalDgen.g:1090:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -692,7 +692,7 @@ public class InternalDgenLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // InternalDgen.g:1083:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalDgen.g:1090:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -712,7 +712,7 @@ public class InternalDgenLexer extends Lexer {
                 }
             } while (true);
 
-            // InternalDgen.g:1083:40: ( ( '\\r' )? '\\n' )?
+            // InternalDgen.g:1090:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -721,9 +721,9 @@ public class InternalDgenLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // InternalDgen.g:1083:41: ( '\\r' )? '\\n'
+                    // InternalDgen.g:1090:41: ( '\\r' )? '\\n'
                     {
-                    // InternalDgen.g:1083:41: ( '\\r' )?
+                    // InternalDgen.g:1090:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -732,7 +732,7 @@ public class InternalDgenLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // InternalDgen.g:1083:41: '\\r'
+                            // InternalDgen.g:1090:41: '\\r'
                             {
                             match('\r'); 
 
@@ -764,10 +764,10 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1085:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // InternalDgen.g:1085:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalDgen.g:1092:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalDgen.g:1092:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // InternalDgen.g:1085:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalDgen.g:1092:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -821,8 +821,8 @@ public class InternalDgenLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // InternalDgen.g:1087:16: ( . )
-            // InternalDgen.g:1087:18: .
+            // InternalDgen.g:1094:16: ( . )
+            // InternalDgen.g:1094:18: .
             {
             matchAny(); 
 

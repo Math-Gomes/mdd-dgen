@@ -101,13 +101,13 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//Entity:
 		//    views=Views
 		//    'entity' name=ID ('extends' superType=[Entity])? '{'
-		//        (features+=Feature)*
+		//        (features+=Feature)+
 		//    '}';
 		@Override public ParserRule getRule() { return rule; }
 		
 		//views=Views
 		//'entity' name=ID ('extends' superType=[Entity])? '{'
-		//    (features+=Feature)*
+		//    (features+=Feature)+
 		//'}'
 		public Group getGroup() { return cGroup; }
 		
@@ -144,7 +144,7 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 		
-		//(features+=Feature)*
+		//(features+=Feature)+
 		public Assignment getFeaturesAssignment_5() { return cFeaturesAssignment_5; }
 		
 		//Feature
@@ -383,7 +383,7 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	//Entity:
 	//    views=Views
 	//    'entity' name=ID ('extends' superType=[Entity])? '{'
-	//        (features+=Feature)*
+	//        (features+=Feature)+
 	//    '}';
 	public EntityElements getEntityAccess() {
 		return pEntity;

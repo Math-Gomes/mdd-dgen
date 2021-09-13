@@ -42,6 +42,8 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		python3 -m venv env
 		source env/bin/activate
 		pip install -r requirements.txt
+		python manage.py makemigrations app
+		python manage.py migrate
 		deactivate
 		
 	'''
@@ -222,6 +224,8 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		# https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 		
 		DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+		CRISPY_TEMPLATE_PACK = 'bootstrap4'
 	'''
 
 	private def createUrls(Resource resource)'''

@@ -32,6 +32,9 @@ public class DjangoUrlsGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("from .views import (");
     _builder.newLine();
+    _builder.append("    ");
+    _builder.append("Home,");
+    _builder.newLine();
     {
       Iterable<Entity> _filter = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
       for(final Entity entity : _filter) {
@@ -45,6 +48,9 @@ public class DjangoUrlsGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.newLine();
     _builder.append("urlpatterns = [");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("path(\'\', Home.as_view(), name=\'home\'),");
     _builder.newLine();
     _builder.append("    ");
     {

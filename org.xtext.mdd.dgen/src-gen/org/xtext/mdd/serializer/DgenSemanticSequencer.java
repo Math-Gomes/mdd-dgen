@@ -101,7 +101,7 @@ public class DgenSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Entity returns Entity
 	 *
 	 * Constraint:
-	 *     (views=Views name=ID superType=[Entity|ID]? features+=Feature*)
+	 *     (views=Views name=ID superType=[Entity|ID]? features+=Feature+)
 	 */
 	protected void sequence_Entity(ISerializationContext context, Entity semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

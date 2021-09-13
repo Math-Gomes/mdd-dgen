@@ -16,7 +16,6 @@ import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
 import org.xtext.mdd.dgen.Entity;
-import org.xtext.mdd.dgen.Feature;
 import org.xtext.mdd.dgen.ViewOptions;
 
 @SuppressWarnings("all")
@@ -56,6 +55,12 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     }
     _builder.newLineIfNotEmpty();
     _builder.append("from django.urls import reverse_lazy");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("class Home(TemplateView):");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("template_name = \'bootstrap/index.html\'");
     _builder.newLine();
     _builder.newLine();
     {
@@ -193,29 +198,6 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("_read.html\"");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
-    _builder.append("    ");
-    _builder.append("def get_querySet(self):");
-    _builder.newLine();
-    _builder.append("        ");
-    _builder.append("return {\'rows\' : ");
-    QualifiedName _fullyQualifiedName_2 = this._iQualifiedNameProvider.getFullyQualifiedName(e);
-    _builder.append(_fullyQualifiedName_2, "        ");
-    _builder.append(".objects.filter(),");
-    _builder.newLineIfNotEmpty();
-    _builder.append("                ");
-    _builder.append("\'cols\' : [");
-    {
-      EList<Feature> _features = e.getFeatures();
-      for(final Feature f : _features) {
-        _builder.append("\'");
-        String _name = f.getName();
-        _builder.append(_name, "                ");
-        _builder.append("\', ");
-      }
-    }
-    _builder.append("\'Acoes\']}");
-    _builder.newLineIfNotEmpty();
-    _builder.newLine();
     return _builder;
   }
   
@@ -257,7 +239,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append(_fullyQualifiedName_1, "    ");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
-    _builder.append("sucess_url = reverse_lazy(\'");
+    _builder.append("success_url = reverse_lazy(\'");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
     _builder.append("_read\')");

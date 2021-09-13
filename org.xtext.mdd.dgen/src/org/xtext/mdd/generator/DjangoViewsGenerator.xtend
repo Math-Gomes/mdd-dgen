@@ -24,6 +24,9 @@ class DjangoViewsGenerator extends AbstractGenerator {
         from .models import «FOR e : resource.allContents.toIterable.filter(Entity) SEPARATOR ', '»«e.fullyQualifiedName»«ENDFOR»
         from django.urls import reverse_lazy
 
+        class Home(TemplateView):
+            template_name = 'bootstrap/index.html'
+
         «FOR entity : resource.allContents.toIterable.filter(Entity)»
         	«val what = try {
 			    val group = entity.views.viewGroup.name
@@ -67,10 +70,6 @@ class DjangoViewsGenerator extends AbstractGenerator {
         class «e.fullyQualifiedName»Read(ListView):
             model = «e.fullyQualifiedName»
             template_name = "app/«e.name.toLowerCase»_read.html"
-
-            def get_querySet(self):
-                return {'rows' : «e.fullyQualifiedName».objects.filter(),
-                        'cols' : [«FOR f : e.features»'«f.name»', «ENDFOR»'Acoes']}
 
     '''
 

@@ -38,11 +38,15 @@ class DjangoModelsGenerator extends AbstractGenerator {
             «FOR feature : e.features»
                 «feature.createAttributes»
             «ENDFOR»
+
+            def __str__(self):
+                return str(self.«e.features.get(0).name»)
     '''
 
     private def createAttributes(Feature f)'''
         «f.name.toLowerCase» = «
-        IF     f.type.name == "String" »models.CharField(max_length=200)«
+        IF f.many                      »models.ManyToManyField(«f.type.name»)«
+        ELSEIF f.type.name == "String" »models.CharField(max_length=200)«
         ELSEIF f.type.name == "Int"    »models.BigIntegerField()«
         ELSEIF f.type.name == "Float"  »models.FloatField()«
         ELSEIF f.type.name == "Bool"   »models.BooleanField()«

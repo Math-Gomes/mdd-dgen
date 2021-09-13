@@ -271,7 +271,7 @@ ruleEntity returns [EObject current=null]
 					afterParserOrEnumRuleCall();
 				}
 			)
-		)*
+		)+
 		otherlv_7='}'
 		{
 			newLeafNode(otherlv_7, grammarAccess.getEntityAccess().getRightCurlyBracketKeyword_6());

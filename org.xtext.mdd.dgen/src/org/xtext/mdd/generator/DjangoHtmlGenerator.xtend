@@ -75,20 +75,41 @@ class DjangoHtmlGenerator extends AbstractGenerator {
             <table id="table" class="display" style="width:100%">
                 <thead>
                     <tr>
-                        {% for column in object_list.cols %}
-                            <th>{{ column }}</th>
-                        {% endfor %}
+                        «FOR f : e.features»
+                        <th>«f.name»</th>
+                        «ENDFOR»
+                        <th>Ações</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {% for «e.name.toLowerCase» in object_list.rows %}
+                    {% for «e.name.toLowerCase» in «e.name.toLowerCase»_list %}
                         <tr>
                             «FOR f : e.features»
-                            <td>{{ «e.name.toLowerCase».«f.name» }}</td>
+                            <td>{{ «e.name.toLowerCase».«f.name.toLowerCase» }}</td>
                             «ENDFOR»
                             <td>
-                                <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}">Atualizar</a>
-                                <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}">Deletar</a>
+                                «val what = try {
+                                    val group = e.views.viewGroup.name
+                                    if (group.length > 0) {}
+                                    'group'
+                                } catch (Exception ex) {
+                                    'option'
+                                }»
+                                «IF what == 'group'»
+                                    «IF e.views.viewGroup.name == 'All'»
+                                        <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}">Atualizar</a>
+                                        <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}">Deletar</a>
+                                    «ENDIF»
+                                «ELSE»
+                                    «FOR opt : e.views.viewOption»
+                                        «IF opt.name == 'Update'»
+                                            <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}">Atualizar</a>
+                                        «ENDIF»
+                                        «IF opt.name == 'Delete'»
+                                            <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}">Deletar</a>
+                                        «ENDIF»
+                                    «ENDFOR»
+                                «ENDIF»
                             </td>
                         </tr>
                     {% endfor %}
@@ -105,9 +126,9 @@ class DjangoHtmlGenerator extends AbstractGenerator {
         {% extends 'bootstrap/index.html' %}
         {% block content %}  
         <form action="" method="post">{% csrf_token %}
-            <p>Tem certeza que deseja deletar a «e.name.toLowerCase» "{{ object.name }}"?</p>
+            <p>Tem certeza que deseja deletar este(a) «e.name.toLowerCase» "{{ object.«e.features.get(0).name» }}"?</p>
             <input type="submit" value="Confirm" />
-            <button type='button' onclick="window.location.href={% url '«e.name.toLowerCase»_list' %}">No</button>
+            <button type='button' onclick="window.location.href={% url '«e.name.toLowerCase»_read' %}">No</button>
         </form>
         {% endblock %}
     '''
