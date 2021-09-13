@@ -21,21 +21,17 @@ class DjangoViewsGenerator extends AbstractGenerator {
         from django.views.generic.base import TemplateView
         from django.views.generic.edit import CreateView, UpdateView, DeleteView
         from django.views.generic.list import ListView
-        from django.contrib.messages.views import SuccessMessageMixin
-        from .models import «FOR e : resource.allContents.toIterable.filter(Entity)» «e.fullyQualifiedName», «ENDFOR»
+        from .models import «FOR e : resource.allContents.toIterable.filter(Entity) SEPARATOR ', '»«e.fullyQualifiedName»«ENDFOR»
         from django.urls import reverse_lazy
-        from django.contrib import messages
 
         «FOR entity : resource.allContents.toIterable.filter(Entity)»
-        	«
-        	val what = try {
+        	«val what = try {
 			    val group = entity.views.viewGroup.name
 			    if (group.length > 0) {}
 			    'group'
 		  	} catch (Exception e) {
 		    	'option'
-		  	}
-        	»
+		  	}»
         	«IF what == 'group'»
         		«IF entity.views.viewGroup.name == 'All'»
 				    «entity.createView»«entity.readView»«entity.updateView»«entity.deleteView»
@@ -63,14 +59,14 @@ class DjangoViewsGenerator extends AbstractGenerator {
         class «e.fullyQualifiedName»Create(CreateView):
             model = «e.fullyQualifiedName»
             fields = '__all__'
-            success_url = reverse_lazy('«e.name.toLowerCase»_list')
+            success_url = reverse_lazy('«e.name.toLowerCase»_read')
 
     '''
 
     private def readView(Entity e) '''
         class «e.fullyQualifiedName»Read(ListView):
             model = «e.fullyQualifiedName»
-            template_name = "app/«e.name.toLowerCase»_list.html"
+            template_name = "app/«e.name.toLowerCase»_read.html"
 
             def get_querySet(self):
                 return {'rows' : «e.fullyQualifiedName».objects.filter(),
@@ -82,14 +78,14 @@ class DjangoViewsGenerator extends AbstractGenerator {
         class «e.fullyQualifiedName»Update(UpdateView):
             model = «e.fullyQualifiedName»
             fields = '__all__'
-            success_url = reverse_lazy('«e.name.toLowerCase»_list')
+            success_url = reverse_lazy('«e.name.toLowerCase»_read')
 
     '''
 
     private def deleteView(Entity e)'''
         class «e.fullyQualifiedName»Delete(DeleteView):
             model = «e.fullyQualifiedName»
-            sucess_url = reverse_lazy('«e.name.toLowerCase»_list')
+            success_url = reverse_lazy('«e.name.toLowerCase»_read')
 
     '''
 }

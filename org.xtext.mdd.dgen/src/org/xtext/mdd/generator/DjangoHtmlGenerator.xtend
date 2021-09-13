@@ -20,7 +20,7 @@ class DjangoHtmlGenerator extends AbstractGenerator {
 	    	if(what == 'group'){
 	    		if(e.views.viewGroup.name == 'All'){
 				    fsa.generateFile("app/templates/app/"+e.name.toLowerCase+"_form.html", e.formHtml)
-	                fsa.generateFile("app/templates/app/"+e.name.toLowerCase+"_list.html", e.readHtml)
+	                fsa.generateFile("app/templates/app/"+e.name.toLowerCase+"_read.html", e.readHtml)
 	                fsa.generateFile("app/templates/app/"+e.name.toLowerCase+"_confirm_delete.html", e.confirmDeleteHtml)
 				}
 	        } else {

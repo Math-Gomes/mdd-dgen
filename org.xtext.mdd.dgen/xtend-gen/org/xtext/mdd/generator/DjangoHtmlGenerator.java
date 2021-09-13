@@ -53,7 +53,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
             fsa.generateFile(_plus_1, this.formHtml(e));
             String _lowerCase_1 = e.getName().toLowerCase();
             String _plus_2 = ("app/templates/app/" + _lowerCase_1);
-            String _plus_3 = (_plus_2 + "_list.html");
+            String _plus_3 = (_plus_2 + "_read.html");
             fsa.generateFile(_plus_3, this.readHtml(e));
             String _lowerCase_2 = e.getName().toLowerCase();
             String _plus_4 = ("app/templates/app/" + _lowerCase_2);

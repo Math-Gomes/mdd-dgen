@@ -40,22 +40,22 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("from django.views.generic.list import ListView");
     _builder.newLine();
-    _builder.append("from django.contrib.messages.views import SuccessMessageMixin");
-    _builder.newLine();
     _builder.append("from .models import ");
     {
       Iterable<Entity> _filter = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
+      boolean _hasElements = false;
       for(final Entity e : _filter) {
-        _builder.append(" ");
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(", ", "");
+        }
         QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
         _builder.append(_fullyQualifiedName);
-        _builder.append(", ");
       }
     }
     _builder.newLineIfNotEmpty();
     _builder.append("from django.urls import reverse_lazy");
-    _builder.newLine();
-    _builder.append("from django.contrib import messages");
     _builder.newLine();
     _builder.newLine();
     {
@@ -168,7 +168,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("success_url = reverse_lazy(\'");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
-    _builder.append("_list\')");
+    _builder.append("_read\')");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;
@@ -190,7 +190,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("template_name = \"app/");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
-    _builder.append("_list.html\"");
+    _builder.append("_read.html\"");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     _builder.append("    ");
@@ -238,7 +238,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("success_url = reverse_lazy(\'");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
-    _builder.append("_list\')");
+    _builder.append("_read\')");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;
@@ -260,7 +260,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("sucess_url = reverse_lazy(\'");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
-    _builder.append("_list\')");
+    _builder.append("_read\')");
     _builder.newLineIfNotEmpty();
     _builder.newLine();
     return _builder;
