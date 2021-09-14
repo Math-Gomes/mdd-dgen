@@ -68,20 +68,12 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t  ");
-    _builder.append("<title>Blackdog</title>");
+    _builder.append("<title>DGen</title>");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
     _builder.append("\t  ");
     _builder.append("<!-- Custom fonts for this template-->");
-    _builder.newLine();
-    _builder.append("\t  ");
-    _builder.append("<!-- <link href=\"{% static \'vendor/fontawesome-free/css/all.min.css\' %}\" rel=\"stylesheet\" type=\"text/css\"> -->");
-    _builder.newLine();
-    _builder.append("\t  ");
-    _builder.append("<!-- <link rel=\"stylesheet\" href=\"https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css\" integrity=\"sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN\" crossorigin=\"anonymous\"> -->");
-    _builder.newLine();
-    _builder.append("\t  ");
     _builder.newLine();
     _builder.append("\t  ");
     _builder.append("<link rel=\"stylesheet\" href=\"https://pro.fontawesome.com/releases/v5.10.0/css/all.css\" integrity=\"sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p\" crossorigin=\"anonymous\"/>");
@@ -95,7 +87,7 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     _builder.append("<!-- Custom styles for this template-->");
     _builder.newLine();
     _builder.append("\t  ");
-    _builder.append("<!-- \"{% static \'css/blog.css\' %}\" -->");
+    _builder.append("<link href=\"{% static \'css/styles.css\' %}\" rel=\"stylesheet\">");
     _builder.newLine();
     _builder.append("\t  ");
     _builder.append("<link href=\"{% static \'css/sb-admin-2.min.css\' %}\" rel=\"stylesheet\">");
@@ -124,7 +116,7 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     _builder.append("<!-- Sidebar -->");
     _builder.newLine();
     _builder.append("\t    ");
-    _builder.append("<ul class=\"navbar-nav bg-gradient-primary sidebar sidebar-dark accordion\" id=\"accordionSidebar\">");
+    _builder.append("<ul class=\"navbar-nav sidebar sidebar-dark\" id=\"dgen-sb\">");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();
@@ -132,7 +124,7 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     _builder.append("<!-- Sidebar - Brand -->");
     _builder.newLine();
     _builder.append("\t      ");
-    _builder.append("<a class=\"sidebar-brand d-flex align-items-center justify-content-center\" style=\"color: white;\">");
+    _builder.append("<a class=\"sidebar-brand d-flex align-items-center justify-content-center\" id=\"dgen-sb-brand\">");
     _builder.newLine();
     _builder.append("\t        ");
     _builder.append("<div class=\"sidebar-brand-icon\">");
@@ -1004,7 +996,7 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     _builder.append("<!-- Begin Page Content -->");
     _builder.newLine();
     _builder.append("\t        ");
-    _builder.append("<div class=\"container-fluid\">");
+    _builder.append("<div class=\"container-fluid\" id=\"dgen-content\">");
     _builder.newLine();
     _builder.append("\t");
     _builder.newLine();

@@ -72,7 +72,7 @@ class DjangoHtmlGenerator extends AbstractGenerator {
             <a href = "{% url '«e.name.toLowerCase»_add' %}" class="btn btn-success" style="float: right; margin-bottom: 10px; margin-right: 10px;">Criar</a>
         </div>
         <div style="margin: auto; width: 80%; padding: 10px;">
-            <table id="table" class="display" style="width:100%">
+            <table id="table" class="table table-hover table-bordered" style="width:100%">
                 <thead>
                     <tr>
                         «FOR f : e.features»
@@ -117,7 +117,11 @@ class DjangoHtmlGenerator extends AbstractGenerator {
             </table>
         </div>
         <script>
-        $('#table').DataTable();
+        $('#table').DataTable({
+        	"language": {
+        	    "url": "//cdn.datatables.net/plug-ins/1.11.1/i18n/pt_br.json"
+        	}
+        });
         </script>
         {% endblock %} 
     '''
@@ -125,11 +129,15 @@ class DjangoHtmlGenerator extends AbstractGenerator {
     private def confirmDeleteHtml(Entity e)'''
         {% extends 'bootstrap/index.html' %}
         {% block content %}  
-        <form action="" method="post">{% csrf_token %}
-            <p>Tem certeza que deseja deletar este(a) «e.name.toLowerCase» "{{ object.«e.features.get(0).name» }}"?</p>
-            <input type="submit" value="Confirm" />
-            <button type='button' onclick="window.location.href={% url '«e.name.toLowerCase»_read' %}">No</button>
-        </form>
+        <div class="my-container">
+            <form action="" method="post">{% csrf_token %}
+                <p>Tem certeza que deseja deletar este(a) «e.name.toLowerCase» "{{ object.«e.features.get(0).name» }}"?</p>
+                <div class="my-container">
+                    <input type="submit" value="Deletar" class="btn btn-danger"/>
+                    <button type='button' class="btn" onclick="window.location.href={% url '«e.name.toLowerCase»_read' %}">Cancelar</button>
+                </div>
+            </form>
+        </div>
         {% endblock %}
     '''
 	

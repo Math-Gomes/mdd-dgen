@@ -10,16 +10,94 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class DjangoStaticGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
-    fsa.generateFile("app/static/css/sb-admin-2.min.css", this.createCss(resource));
+    fsa.generateFile("app/static/css/styles.css", this.createStylesCss(resource));
+    fsa.generateFile("app/static/css/sb-admin-2.min.css", this.createSbAdminCss(resource));
     fsa.generateFile("app/static/vendor/bootstrap/js/bootstrap.bundle.min.js", this.createBootstrapBundleJs(resource));
     fsa.generateFile("app/static/vendor/jquery/jquery.min.js", this.createJqueryJs(resource));
     fsa.generateFile("app/static/vendor/datatables/dataTables.bootstrap4.min.css", this.createDataTableCss(resource));
     fsa.generateFile("app/static/vendor/jquery-easing/jquery.easing.min.js", this.createJQueryEasing(resource));
-    fsa.generateFile("app/static/js/sb-admin-2.min.js", this.createSbAdmin(resource));
+    fsa.generateFile("app/static/js/sb-admin-2.min.js", this.createSbAdminJs(resource));
     fsa.generateFile("app/static/vendor/bootstrap/js/bootstrap.bundle.min.js.map", this.createBootstrapBundleMap(resource));
   }
   
-  private CharSequence createCss(final Resource resource) {
+  private CharSequence createStylesCss(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append(":root {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("--c1: #f2be54;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("--c2: #f8f8ff;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("--c3: #87aeb4;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("--c4: #153e5c;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("--c5: #191a1d;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("#dgen-sb {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("background-color: var(--c4);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("background-image: linear-gradient(180deg, var(--c4) 10%, var(--c5) 100%);");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("background-size: cover;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("#dgen-sb-brand {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("color: var(--c2);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("#dgen-topbar {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("background-color: var(--c2);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("#dgen-content {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("color: var(--c5);");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append(".my-container {");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("width: 100%;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("display: flex;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("justify-content: center;");
+    _builder.newLine();
+    _builder.append("}");
+    _builder.newLine();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createSbAdminCss(final Resource resource) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*!");
     _builder.newLine();
@@ -87,7 +165,7 @@ public class DjangoStaticGenerator extends AbstractGenerator {
     return _builder;
   }
   
-  private CharSequence createSbAdmin(final Resource resource) {
+  private CharSequence createSbAdminJs(final Resource resource) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("/*!");
     _builder.newLine();
