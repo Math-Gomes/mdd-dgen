@@ -11,8 +11,6 @@ Para construir este gerador, utilizamos o _[Xtext](https://www.eclipse.org/Xtext
 
 A partir da definição da gramática, recorremos ao _[Xtend](https://www.eclipse.org/xtend/)_ para, finalmente, gerar o código para a aplicação em _Django_.
 
-- - -
-
 ## Criando uma nova aplicação
 
 Primeiramente é necessário criar o seu `<filename>.dgen`. 
