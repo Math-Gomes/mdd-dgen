@@ -1,9 +1,8 @@
-<div style="display: flex; flex-direction: column; align-items: center">
+<p align="center"> 
     <img src="https://i.imgur.com/2iJZfJz.png" width="50" height="50">
-    <h1 style="display: inline">DGen</h1>
-</div>
+</p>
 
-
+<h1 align="center">DGen</h1>
 
 Esta ferramenta consiste em um **gerador de código**, no qual a partir da gramática _DGen_, geramos um **CRUD** das entidades definidas na gramática para uma aplicação web em _Django_. 
 
@@ -77,15 +76,15 @@ Para executar a aplicação _Django_ que foi gerada, devemos usar os seguintes c
 ./scripts/init
 
 # Para entrar no env...
-cd src-gen
-source env/bin/activate 
+> cd src-gen
+> source env/bin/activate 
 
 # Para atualizar a estrutura do banco de dados...
-python manage.py makemigrations app 
-python manage.py migrate
+> python manage.py makemigrations app 
+> python manage.py migrate
 
 # E finalmente, para executar o servidor...
-python manage.py runserver 
+> python manage.py runserver 
 ```
 
 E por fim, a última consideração é que, o código gerado servirá como base para o programador começar a construir sua a aplicação, ou seja, eventualmente poderão ocorrer mudanças nas entidades (classes definidas no arquivo `models.py`). Quando houverem alterações na(s) classe(s) do projeto, pare de executar o servidor e rode os seguintes comandos para atualizar a estrutura do banco de dados.
