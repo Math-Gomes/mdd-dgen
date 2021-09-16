@@ -25,6 +25,7 @@ import org.xtext.mdd.dgen.Type;
  * <ul>
  *   <li>{@link org.xtext.mdd.dgen.impl.FeatureImpl#isMany <em>Many</em>}</li>
  *   <li>{@link org.xtext.mdd.dgen.impl.FeatureImpl#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mdd.dgen.impl.FeatureImpl#isOptional <em>Optional</em>}</li>
  *   <li>{@link org.xtext.mdd.dgen.impl.FeatureImpl#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -71,6 +72,26 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
    * @ordered
    */
   protected String name = NAME_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOptional()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean OPTIONAL_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOptional()
+   * @generated
+   * @ordered
+   */
+  protected boolean optional = OPTIONAL_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' reference.
@@ -159,6 +180,31 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
    * @generated
    */
   @Override
+  public boolean isOptional()
+  {
+    return optional;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setOptional(boolean newOptional)
+  {
+    boolean oldOptional = optional;
+    optional = newOptional;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DgenPackage.FEATURE__OPTIONAL, oldOptional, optional));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Type getType()
   {
     if (type != null && type.eIsProxy())
@@ -212,6 +258,8 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
         return isMany();
       case DgenPackage.FEATURE__NAME:
         return getName();
+      case DgenPackage.FEATURE__OPTIONAL:
+        return isOptional();
       case DgenPackage.FEATURE__TYPE:
         if (resolve) return getType();
         return basicGetType();
@@ -234,6 +282,9 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
         return;
       case DgenPackage.FEATURE__NAME:
         setName((String)newValue);
+        return;
+      case DgenPackage.FEATURE__OPTIONAL:
+        setOptional((Boolean)newValue);
         return;
       case DgenPackage.FEATURE__TYPE:
         setType((Type)newValue);
@@ -258,6 +309,9 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
       case DgenPackage.FEATURE__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case DgenPackage.FEATURE__OPTIONAL:
+        setOptional(OPTIONAL_EDEFAULT);
+        return;
       case DgenPackage.FEATURE__TYPE:
         setType((Type)null);
         return;
@@ -279,6 +333,8 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
         return many != MANY_EDEFAULT;
       case DgenPackage.FEATURE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case DgenPackage.FEATURE__OPTIONAL:
+        return optional != OPTIONAL_EDEFAULT;
       case DgenPackage.FEATURE__TYPE:
         return type != null;
     }
@@ -300,6 +356,8 @@ public class FeatureImpl extends MinimalEObjectImpl.Container implements Feature
     result.append(many);
     result.append(", name: ");
     result.append(name);
+    result.append(", optional: ");
+    result.append(optional);
     result.append(')');
     return result.toString();
   }

@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDgenParser extends AbstractInternalContentAssistParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'All'", "'None'", "'Create'", "'Read'", "'Update'", "'Delete'", "'datatype'", "'entity'", "'{'", "'}'", "'extends'", "':'", "'@'", "'many'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'All'", "'None'", "'Create'", "'Read'", "'Update'", "'Delete'", "'datatype'", "'entity'", "'{'", "'}'", "'extends'", "':'", "'@'", "'many'", "'?'"
     };
     public static final int RULE_STRING=6;
     public static final int RULE_SL_COMMENT=8;
@@ -44,6 +44,7 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
     public static final int RULE_ML_COMMENT=7;
     public static final int T__23=23;
     public static final int T__24=24;
+    public static final int T__25=25;
     public static final int T__20=20;
     public static final int T__21=21;
 
@@ -2240,7 +2241,7 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
             // InternalDgen.g:717:1: ( rule__Feature__Group__2__Impl rule__Feature__Group__3 )
             // InternalDgen.g:718:2: rule__Feature__Group__2__Impl rule__Feature__Group__3
             {
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_11);
             rule__Feature__Group__2__Impl();
 
             state._fsp--;
@@ -2269,21 +2270,42 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__Group__2__Impl"
-    // InternalDgen.g:725:1: rule__Feature__Group__2__Impl : ( ':' ) ;
+    // InternalDgen.g:725:1: rule__Feature__Group__2__Impl : ( ( rule__Feature__OptionalAssignment_2 )? ) ;
     public final void rule__Feature__Group__2__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:729:1: ( ( ':' ) )
-            // InternalDgen.g:730:1: ( ':' )
+            // InternalDgen.g:729:1: ( ( ( rule__Feature__OptionalAssignment_2 )? ) )
+            // InternalDgen.g:730:1: ( ( rule__Feature__OptionalAssignment_2 )? )
             {
-            // InternalDgen.g:730:1: ( ':' )
-            // InternalDgen.g:731:2: ':'
+            // InternalDgen.g:730:1: ( ( rule__Feature__OptionalAssignment_2 )? )
+            // InternalDgen.g:731:2: ( rule__Feature__OptionalAssignment_2 )?
             {
-             before(grammarAccess.getFeatureAccess().getColonKeyword_2()); 
-            match(input,22,FOLLOW_2); 
-             after(grammarAccess.getFeatureAccess().getColonKeyword_2()); 
+             before(grammarAccess.getFeatureAccess().getOptionalAssignment_2()); 
+            // InternalDgen.g:732:2: ( rule__Feature__OptionalAssignment_2 )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
+
+            if ( (LA10_0==25) ) {
+                alt10=1;
+            }
+            switch (alt10) {
+                case 1 :
+                    // InternalDgen.g:732:3: rule__Feature__OptionalAssignment_2
+                    {
+                    pushFollow(FOLLOW_2);
+                    rule__Feature__OptionalAssignment_2();
+
+                    state._fsp--;
+
+
+                    }
+                    break;
+
+            }
+
+             after(grammarAccess.getFeatureAccess().getOptionalAssignment_2()); 
 
             }
 
@@ -2306,17 +2328,22 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__Group__3"
-    // InternalDgen.g:740:1: rule__Feature__Group__3 : rule__Feature__Group__3__Impl ;
+    // InternalDgen.g:740:1: rule__Feature__Group__3 : rule__Feature__Group__3__Impl rule__Feature__Group__4 ;
     public final void rule__Feature__Group__3() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:744:1: ( rule__Feature__Group__3__Impl )
-            // InternalDgen.g:745:2: rule__Feature__Group__3__Impl
+            // InternalDgen.g:744:1: ( rule__Feature__Group__3__Impl rule__Feature__Group__4 )
+            // InternalDgen.g:745:2: rule__Feature__Group__3__Impl rule__Feature__Group__4
             {
-            pushFollow(FOLLOW_2);
+            pushFollow(FOLLOW_5);
             rule__Feature__Group__3__Impl();
+
+            state._fsp--;
+
+            pushFollow(FOLLOW_2);
+            rule__Feature__Group__4();
 
             state._fsp--;
 
@@ -2339,31 +2366,21 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__Group__3__Impl"
-    // InternalDgen.g:751:1: rule__Feature__Group__3__Impl : ( ( rule__Feature__TypeAssignment_3 ) ) ;
+    // InternalDgen.g:752:1: rule__Feature__Group__3__Impl : ( ':' ) ;
     public final void rule__Feature__Group__3__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:755:1: ( ( ( rule__Feature__TypeAssignment_3 ) ) )
-            // InternalDgen.g:756:1: ( ( rule__Feature__TypeAssignment_3 ) )
+            // InternalDgen.g:756:1: ( ( ':' ) )
+            // InternalDgen.g:757:1: ( ':' )
             {
-            // InternalDgen.g:756:1: ( ( rule__Feature__TypeAssignment_3 ) )
-            // InternalDgen.g:757:2: ( rule__Feature__TypeAssignment_3 )
+            // InternalDgen.g:757:1: ( ':' )
+            // InternalDgen.g:758:2: ':'
             {
-             before(grammarAccess.getFeatureAccess().getTypeAssignment_3()); 
-            // InternalDgen.g:758:2: ( rule__Feature__TypeAssignment_3 )
-            // InternalDgen.g:758:3: rule__Feature__TypeAssignment_3
-            {
-            pushFollow(FOLLOW_2);
-            rule__Feature__TypeAssignment_3();
-
-            state._fsp--;
-
-
-            }
-
-             after(grammarAccess.getFeatureAccess().getTypeAssignment_3()); 
+             before(grammarAccess.getFeatureAccess().getColonKeyword_3()); 
+            match(input,22,FOLLOW_2); 
+             after(grammarAccess.getFeatureAccess().getColonKeyword_3()); 
 
             }
 
@@ -2385,15 +2402,95 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Feature__Group__3__Impl"
 
 
+    // $ANTLR start "rule__Feature__Group__4"
+    // InternalDgen.g:767:1: rule__Feature__Group__4 : rule__Feature__Group__4__Impl ;
+    public final void rule__Feature__Group__4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalDgen.g:771:1: ( rule__Feature__Group__4__Impl )
+            // InternalDgen.g:772:2: rule__Feature__Group__4__Impl
+            {
+            pushFollow(FOLLOW_2);
+            rule__Feature__Group__4__Impl();
+
+            state._fsp--;
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Feature__Group__4"
+
+
+    // $ANTLR start "rule__Feature__Group__4__Impl"
+    // InternalDgen.g:778:1: rule__Feature__Group__4__Impl : ( ( rule__Feature__TypeAssignment_4 ) ) ;
+    public final void rule__Feature__Group__4__Impl() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalDgen.g:782:1: ( ( ( rule__Feature__TypeAssignment_4 ) ) )
+            // InternalDgen.g:783:1: ( ( rule__Feature__TypeAssignment_4 ) )
+            {
+            // InternalDgen.g:783:1: ( ( rule__Feature__TypeAssignment_4 ) )
+            // InternalDgen.g:784:2: ( rule__Feature__TypeAssignment_4 )
+            {
+             before(grammarAccess.getFeatureAccess().getTypeAssignment_4()); 
+            // InternalDgen.g:785:2: ( rule__Feature__TypeAssignment_4 )
+            // InternalDgen.g:785:3: rule__Feature__TypeAssignment_4
+            {
+            pushFollow(FOLLOW_2);
+            rule__Feature__TypeAssignment_4();
+
+            state._fsp--;
+
+
+            }
+
+             after(grammarAccess.getFeatureAccess().getTypeAssignment_4()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Feature__Group__4__Impl"
+
+
     // $ANTLR start "rule__ViewGroup__Group__0"
-    // InternalDgen.g:767:1: rule__ViewGroup__Group__0 : rule__ViewGroup__Group__0__Impl rule__ViewGroup__Group__1 ;
+    // InternalDgen.g:794:1: rule__ViewGroup__Group__0 : rule__ViewGroup__Group__0__Impl rule__ViewGroup__Group__1 ;
     public final void rule__ViewGroup__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:771:1: ( rule__ViewGroup__Group__0__Impl rule__ViewGroup__Group__1 )
-            // InternalDgen.g:772:2: rule__ViewGroup__Group__0__Impl rule__ViewGroup__Group__1
+            // InternalDgen.g:798:1: ( rule__ViewGroup__Group__0__Impl rule__ViewGroup__Group__1 )
+            // InternalDgen.g:799:2: rule__ViewGroup__Group__0__Impl rule__ViewGroup__Group__1
             {
             pushFollow(FOLLOW_12);
             rule__ViewGroup__Group__0__Impl();
@@ -2424,17 +2521,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewGroup__Group__0__Impl"
-    // InternalDgen.g:779:1: rule__ViewGroup__Group__0__Impl : ( '@' ) ;
+    // InternalDgen.g:806:1: rule__ViewGroup__Group__0__Impl : ( '@' ) ;
     public final void rule__ViewGroup__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:783:1: ( ( '@' ) )
-            // InternalDgen.g:784:1: ( '@' )
+            // InternalDgen.g:810:1: ( ( '@' ) )
+            // InternalDgen.g:811:1: ( '@' )
             {
-            // InternalDgen.g:784:1: ( '@' )
-            // InternalDgen.g:785:2: '@'
+            // InternalDgen.g:811:1: ( '@' )
+            // InternalDgen.g:812:2: '@'
             {
              before(grammarAccess.getViewGroupAccess().getCommercialAtKeyword_0()); 
             match(input,23,FOLLOW_2); 
@@ -2461,14 +2558,14 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewGroup__Group__1"
-    // InternalDgen.g:794:1: rule__ViewGroup__Group__1 : rule__ViewGroup__Group__1__Impl ;
+    // InternalDgen.g:821:1: rule__ViewGroup__Group__1 : rule__ViewGroup__Group__1__Impl ;
     public final void rule__ViewGroup__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:798:1: ( rule__ViewGroup__Group__1__Impl )
-            // InternalDgen.g:799:2: rule__ViewGroup__Group__1__Impl
+            // InternalDgen.g:825:1: ( rule__ViewGroup__Group__1__Impl )
+            // InternalDgen.g:826:2: rule__ViewGroup__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ViewGroup__Group__1__Impl();
@@ -2494,21 +2591,21 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewGroup__Group__1__Impl"
-    // InternalDgen.g:805:1: rule__ViewGroup__Group__1__Impl : ( ( rule__ViewGroup__NameAssignment_1 ) ) ;
+    // InternalDgen.g:832:1: rule__ViewGroup__Group__1__Impl : ( ( rule__ViewGroup__NameAssignment_1 ) ) ;
     public final void rule__ViewGroup__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:809:1: ( ( ( rule__ViewGroup__NameAssignment_1 ) ) )
-            // InternalDgen.g:810:1: ( ( rule__ViewGroup__NameAssignment_1 ) )
+            // InternalDgen.g:836:1: ( ( ( rule__ViewGroup__NameAssignment_1 ) ) )
+            // InternalDgen.g:837:1: ( ( rule__ViewGroup__NameAssignment_1 ) )
             {
-            // InternalDgen.g:810:1: ( ( rule__ViewGroup__NameAssignment_1 ) )
-            // InternalDgen.g:811:2: ( rule__ViewGroup__NameAssignment_1 )
+            // InternalDgen.g:837:1: ( ( rule__ViewGroup__NameAssignment_1 ) )
+            // InternalDgen.g:838:2: ( rule__ViewGroup__NameAssignment_1 )
             {
              before(grammarAccess.getViewGroupAccess().getNameAssignment_1()); 
-            // InternalDgen.g:812:2: ( rule__ViewGroup__NameAssignment_1 )
-            // InternalDgen.g:812:3: rule__ViewGroup__NameAssignment_1
+            // InternalDgen.g:839:2: ( rule__ViewGroup__NameAssignment_1 )
+            // InternalDgen.g:839:3: rule__ViewGroup__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ViewGroup__NameAssignment_1();
@@ -2541,14 +2638,14 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewOptions__Group__0"
-    // InternalDgen.g:821:1: rule__ViewOptions__Group__0 : rule__ViewOptions__Group__0__Impl rule__ViewOptions__Group__1 ;
+    // InternalDgen.g:848:1: rule__ViewOptions__Group__0 : rule__ViewOptions__Group__0__Impl rule__ViewOptions__Group__1 ;
     public final void rule__ViewOptions__Group__0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:825:1: ( rule__ViewOptions__Group__0__Impl rule__ViewOptions__Group__1 )
-            // InternalDgen.g:826:2: rule__ViewOptions__Group__0__Impl rule__ViewOptions__Group__1
+            // InternalDgen.g:852:1: ( rule__ViewOptions__Group__0__Impl rule__ViewOptions__Group__1 )
+            // InternalDgen.g:853:2: rule__ViewOptions__Group__0__Impl rule__ViewOptions__Group__1
             {
             pushFollow(FOLLOW_13);
             rule__ViewOptions__Group__0__Impl();
@@ -2579,17 +2676,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewOptions__Group__0__Impl"
-    // InternalDgen.g:833:1: rule__ViewOptions__Group__0__Impl : ( '@' ) ;
+    // InternalDgen.g:860:1: rule__ViewOptions__Group__0__Impl : ( '@' ) ;
     public final void rule__ViewOptions__Group__0__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:837:1: ( ( '@' ) )
-            // InternalDgen.g:838:1: ( '@' )
+            // InternalDgen.g:864:1: ( ( '@' ) )
+            // InternalDgen.g:865:1: ( '@' )
             {
-            // InternalDgen.g:838:1: ( '@' )
-            // InternalDgen.g:839:2: '@'
+            // InternalDgen.g:865:1: ( '@' )
+            // InternalDgen.g:866:2: '@'
             {
              before(grammarAccess.getViewOptionsAccess().getCommercialAtKeyword_0()); 
             match(input,23,FOLLOW_2); 
@@ -2616,14 +2713,14 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewOptions__Group__1"
-    // InternalDgen.g:848:1: rule__ViewOptions__Group__1 : rule__ViewOptions__Group__1__Impl ;
+    // InternalDgen.g:875:1: rule__ViewOptions__Group__1 : rule__ViewOptions__Group__1__Impl ;
     public final void rule__ViewOptions__Group__1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:852:1: ( rule__ViewOptions__Group__1__Impl )
-            // InternalDgen.g:853:2: rule__ViewOptions__Group__1__Impl
+            // InternalDgen.g:879:1: ( rule__ViewOptions__Group__1__Impl )
+            // InternalDgen.g:880:2: rule__ViewOptions__Group__1__Impl
             {
             pushFollow(FOLLOW_2);
             rule__ViewOptions__Group__1__Impl();
@@ -2649,21 +2746,21 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewOptions__Group__1__Impl"
-    // InternalDgen.g:859:1: rule__ViewOptions__Group__1__Impl : ( ( rule__ViewOptions__NameAssignment_1 ) ) ;
+    // InternalDgen.g:886:1: rule__ViewOptions__Group__1__Impl : ( ( rule__ViewOptions__NameAssignment_1 ) ) ;
     public final void rule__ViewOptions__Group__1__Impl() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:863:1: ( ( ( rule__ViewOptions__NameAssignment_1 ) ) )
-            // InternalDgen.g:864:1: ( ( rule__ViewOptions__NameAssignment_1 ) )
+            // InternalDgen.g:890:1: ( ( ( rule__ViewOptions__NameAssignment_1 ) ) )
+            // InternalDgen.g:891:1: ( ( rule__ViewOptions__NameAssignment_1 ) )
             {
-            // InternalDgen.g:864:1: ( ( rule__ViewOptions__NameAssignment_1 ) )
-            // InternalDgen.g:865:2: ( rule__ViewOptions__NameAssignment_1 )
+            // InternalDgen.g:891:1: ( ( rule__ViewOptions__NameAssignment_1 ) )
+            // InternalDgen.g:892:2: ( rule__ViewOptions__NameAssignment_1 )
             {
              before(grammarAccess.getViewOptionsAccess().getNameAssignment_1()); 
-            // InternalDgen.g:866:2: ( rule__ViewOptions__NameAssignment_1 )
-            // InternalDgen.g:866:3: rule__ViewOptions__NameAssignment_1
+            // InternalDgen.g:893:2: ( rule__ViewOptions__NameAssignment_1 )
+            // InternalDgen.g:893:3: rule__ViewOptions__NameAssignment_1
             {
             pushFollow(FOLLOW_2);
             rule__ViewOptions__NameAssignment_1();
@@ -2696,17 +2793,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Domainmodel__ElementsAssignment"
-    // InternalDgen.g:875:1: rule__Domainmodel__ElementsAssignment : ( ruleType ) ;
+    // InternalDgen.g:902:1: rule__Domainmodel__ElementsAssignment : ( ruleType ) ;
     public final void rule__Domainmodel__ElementsAssignment() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:879:1: ( ( ruleType ) )
-            // InternalDgen.g:880:2: ( ruleType )
+            // InternalDgen.g:906:1: ( ( ruleType ) )
+            // InternalDgen.g:907:2: ( ruleType )
             {
-            // InternalDgen.g:880:2: ( ruleType )
-            // InternalDgen.g:881:3: ruleType
+            // InternalDgen.g:907:2: ( ruleType )
+            // InternalDgen.g:908:3: ruleType
             {
              before(grammarAccess.getDomainmodelAccess().getElementsTypeParserRuleCall_0()); 
             pushFollow(FOLLOW_2);
@@ -2737,17 +2834,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__DataType__NameAssignment_1"
-    // InternalDgen.g:890:1: rule__DataType__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalDgen.g:917:1: rule__DataType__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__DataType__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:894:1: ( ( RULE_ID ) )
-            // InternalDgen.g:895:2: ( RULE_ID )
+            // InternalDgen.g:921:1: ( ( RULE_ID ) )
+            // InternalDgen.g:922:2: ( RULE_ID )
             {
-            // InternalDgen.g:895:2: ( RULE_ID )
-            // InternalDgen.g:896:3: RULE_ID
+            // InternalDgen.g:922:2: ( RULE_ID )
+            // InternalDgen.g:923:3: RULE_ID
             {
              before(grammarAccess.getDataTypeAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2774,17 +2871,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__ViewsAssignment_0"
-    // InternalDgen.g:905:1: rule__Entity__ViewsAssignment_0 : ( ruleViews ) ;
+    // InternalDgen.g:932:1: rule__Entity__ViewsAssignment_0 : ( ruleViews ) ;
     public final void rule__Entity__ViewsAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:909:1: ( ( ruleViews ) )
-            // InternalDgen.g:910:2: ( ruleViews )
+            // InternalDgen.g:936:1: ( ( ruleViews ) )
+            // InternalDgen.g:937:2: ( ruleViews )
             {
-            // InternalDgen.g:910:2: ( ruleViews )
-            // InternalDgen.g:911:3: ruleViews
+            // InternalDgen.g:937:2: ( ruleViews )
+            // InternalDgen.g:938:3: ruleViews
             {
              before(grammarAccess.getEntityAccess().getViewsViewsParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -2815,17 +2912,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__NameAssignment_2"
-    // InternalDgen.g:920:1: rule__Entity__NameAssignment_2 : ( RULE_ID ) ;
+    // InternalDgen.g:947:1: rule__Entity__NameAssignment_2 : ( RULE_ID ) ;
     public final void rule__Entity__NameAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:924:1: ( ( RULE_ID ) )
-            // InternalDgen.g:925:2: ( RULE_ID )
+            // InternalDgen.g:951:1: ( ( RULE_ID ) )
+            // InternalDgen.g:952:2: ( RULE_ID )
             {
-            // InternalDgen.g:925:2: ( RULE_ID )
-            // InternalDgen.g:926:3: RULE_ID
+            // InternalDgen.g:952:2: ( RULE_ID )
+            // InternalDgen.g:953:3: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getNameIDTerminalRuleCall_2_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2852,21 +2949,21 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__SuperTypeAssignment_3_1"
-    // InternalDgen.g:935:1: rule__Entity__SuperTypeAssignment_3_1 : ( ( RULE_ID ) ) ;
+    // InternalDgen.g:962:1: rule__Entity__SuperTypeAssignment_3_1 : ( ( RULE_ID ) ) ;
     public final void rule__Entity__SuperTypeAssignment_3_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:939:1: ( ( ( RULE_ID ) ) )
-            // InternalDgen.g:940:2: ( ( RULE_ID ) )
+            // InternalDgen.g:966:1: ( ( ( RULE_ID ) ) )
+            // InternalDgen.g:967:2: ( ( RULE_ID ) )
             {
-            // InternalDgen.g:940:2: ( ( RULE_ID ) )
-            // InternalDgen.g:941:3: ( RULE_ID )
+            // InternalDgen.g:967:2: ( ( RULE_ID ) )
+            // InternalDgen.g:968:3: ( RULE_ID )
             {
              before(grammarAccess.getEntityAccess().getSuperTypeEntityCrossReference_3_1_0()); 
-            // InternalDgen.g:942:3: ( RULE_ID )
-            // InternalDgen.g:943:4: RULE_ID
+            // InternalDgen.g:969:3: ( RULE_ID )
+            // InternalDgen.g:970:4: RULE_ID
             {
              before(grammarAccess.getEntityAccess().getSuperTypeEntityIDTerminalRuleCall_3_1_0_1()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -2897,17 +2994,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Entity__FeaturesAssignment_5"
-    // InternalDgen.g:954:1: rule__Entity__FeaturesAssignment_5 : ( ruleFeature ) ;
+    // InternalDgen.g:981:1: rule__Entity__FeaturesAssignment_5 : ( ruleFeature ) ;
     public final void rule__Entity__FeaturesAssignment_5() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:958:1: ( ( ruleFeature ) )
-            // InternalDgen.g:959:2: ( ruleFeature )
+            // InternalDgen.g:985:1: ( ( ruleFeature ) )
+            // InternalDgen.g:986:2: ( ruleFeature )
             {
-            // InternalDgen.g:959:2: ( ruleFeature )
-            // InternalDgen.g:960:3: ruleFeature
+            // InternalDgen.g:986:2: ( ruleFeature )
+            // InternalDgen.g:987:3: ruleFeature
             {
              before(grammarAccess.getEntityAccess().getFeaturesFeatureParserRuleCall_5_0()); 
             pushFollow(FOLLOW_2);
@@ -2938,21 +3035,21 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__ManyAssignment_0"
-    // InternalDgen.g:969:1: rule__Feature__ManyAssignment_0 : ( ( 'many' ) ) ;
+    // InternalDgen.g:996:1: rule__Feature__ManyAssignment_0 : ( ( 'many' ) ) ;
     public final void rule__Feature__ManyAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:973:1: ( ( ( 'many' ) ) )
-            // InternalDgen.g:974:2: ( ( 'many' ) )
+            // InternalDgen.g:1000:1: ( ( ( 'many' ) ) )
+            // InternalDgen.g:1001:2: ( ( 'many' ) )
             {
-            // InternalDgen.g:974:2: ( ( 'many' ) )
-            // InternalDgen.g:975:3: ( 'many' )
+            // InternalDgen.g:1001:2: ( ( 'many' ) )
+            // InternalDgen.g:1002:3: ( 'many' )
             {
              before(grammarAccess.getFeatureAccess().getManyManyKeyword_0_0()); 
-            // InternalDgen.g:976:3: ( 'many' )
-            // InternalDgen.g:977:4: 'many'
+            // InternalDgen.g:1003:3: ( 'many' )
+            // InternalDgen.g:1004:4: 'many'
             {
              before(grammarAccess.getFeatureAccess().getManyManyKeyword_0_0()); 
             match(input,24,FOLLOW_2); 
@@ -2983,17 +3080,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Feature__NameAssignment_1"
-    // InternalDgen.g:988:1: rule__Feature__NameAssignment_1 : ( RULE_ID ) ;
+    // InternalDgen.g:1015:1: rule__Feature__NameAssignment_1 : ( RULE_ID ) ;
     public final void rule__Feature__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:992:1: ( ( RULE_ID ) )
-            // InternalDgen.g:993:2: ( RULE_ID )
+            // InternalDgen.g:1019:1: ( ( RULE_ID ) )
+            // InternalDgen.g:1020:2: ( RULE_ID )
             {
-            // InternalDgen.g:993:2: ( RULE_ID )
-            // InternalDgen.g:994:3: RULE_ID
+            // InternalDgen.g:1020:2: ( RULE_ID )
+            // InternalDgen.g:1021:3: RULE_ID
             {
              before(grammarAccess.getFeatureAccess().getNameIDTerminalRuleCall_1_0()); 
             match(input,RULE_ID,FOLLOW_2); 
@@ -3019,30 +3116,30 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
     // $ANTLR end "rule__Feature__NameAssignment_1"
 
 
-    // $ANTLR start "rule__Feature__TypeAssignment_3"
-    // InternalDgen.g:1003:1: rule__Feature__TypeAssignment_3 : ( ( RULE_ID ) ) ;
-    public final void rule__Feature__TypeAssignment_3() throws RecognitionException {
+    // $ANTLR start "rule__Feature__OptionalAssignment_2"
+    // InternalDgen.g:1030:1: rule__Feature__OptionalAssignment_2 : ( ( '?' ) ) ;
+    public final void rule__Feature__OptionalAssignment_2() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:1007:1: ( ( ( RULE_ID ) ) )
-            // InternalDgen.g:1008:2: ( ( RULE_ID ) )
+            // InternalDgen.g:1034:1: ( ( ( '?' ) ) )
+            // InternalDgen.g:1035:2: ( ( '?' ) )
             {
-            // InternalDgen.g:1008:2: ( ( RULE_ID ) )
-            // InternalDgen.g:1009:3: ( RULE_ID )
+            // InternalDgen.g:1035:2: ( ( '?' ) )
+            // InternalDgen.g:1036:3: ( '?' )
             {
-             before(grammarAccess.getFeatureAccess().getTypeTypeCrossReference_3_0()); 
-            // InternalDgen.g:1010:3: ( RULE_ID )
-            // InternalDgen.g:1011:4: RULE_ID
+             before(grammarAccess.getFeatureAccess().getOptionalQuestionMarkKeyword_2_0()); 
+            // InternalDgen.g:1037:3: ( '?' )
+            // InternalDgen.g:1038:4: '?'
             {
-             before(grammarAccess.getFeatureAccess().getTypeTypeIDTerminalRuleCall_3_0_1()); 
-            match(input,RULE_ID,FOLLOW_2); 
-             after(grammarAccess.getFeatureAccess().getTypeTypeIDTerminalRuleCall_3_0_1()); 
+             before(grammarAccess.getFeatureAccess().getOptionalQuestionMarkKeyword_2_0()); 
+            match(input,25,FOLLOW_2); 
+             after(grammarAccess.getFeatureAccess().getOptionalQuestionMarkKeyword_2_0()); 
 
             }
 
-             after(grammarAccess.getFeatureAccess().getTypeTypeCrossReference_3_0()); 
+             after(grammarAccess.getFeatureAccess().getOptionalQuestionMarkKeyword_2_0()); 
 
             }
 
@@ -3061,25 +3158,70 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
         }
         return ;
     }
-    // $ANTLR end "rule__Feature__TypeAssignment_3"
+    // $ANTLR end "rule__Feature__OptionalAssignment_2"
+
+
+    // $ANTLR start "rule__Feature__TypeAssignment_4"
+    // InternalDgen.g:1049:1: rule__Feature__TypeAssignment_4 : ( ( RULE_ID ) ) ;
+    public final void rule__Feature__TypeAssignment_4() throws RecognitionException {
+
+        		int stackSize = keepStackSize();
+        	
+        try {
+            // InternalDgen.g:1053:1: ( ( ( RULE_ID ) ) )
+            // InternalDgen.g:1054:2: ( ( RULE_ID ) )
+            {
+            // InternalDgen.g:1054:2: ( ( RULE_ID ) )
+            // InternalDgen.g:1055:3: ( RULE_ID )
+            {
+             before(grammarAccess.getFeatureAccess().getTypeTypeCrossReference_4_0()); 
+            // InternalDgen.g:1056:3: ( RULE_ID )
+            // InternalDgen.g:1057:4: RULE_ID
+            {
+             before(grammarAccess.getFeatureAccess().getTypeTypeIDTerminalRuleCall_4_0_1()); 
+            match(input,RULE_ID,FOLLOW_2); 
+             after(grammarAccess.getFeatureAccess().getTypeTypeIDTerminalRuleCall_4_0_1()); 
+
+            }
+
+             after(grammarAccess.getFeatureAccess().getTypeTypeCrossReference_4_0()); 
+
+            }
+
+
+            }
+
+        }
+        catch (RecognitionException re) {
+            reportError(re);
+            recover(input,re);
+        }
+        finally {
+
+            	restoreStackSize(stackSize);
+
+        }
+        return ;
+    }
+    // $ANTLR end "rule__Feature__TypeAssignment_4"
 
 
     // $ANTLR start "rule__ViewGroup__NameAssignment_1"
-    // InternalDgen.g:1022:1: rule__ViewGroup__NameAssignment_1 : ( ( rule__ViewGroup__NameAlternatives_1_0 ) ) ;
+    // InternalDgen.g:1068:1: rule__ViewGroup__NameAssignment_1 : ( ( rule__ViewGroup__NameAlternatives_1_0 ) ) ;
     public final void rule__ViewGroup__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:1026:1: ( ( ( rule__ViewGroup__NameAlternatives_1_0 ) ) )
-            // InternalDgen.g:1027:2: ( ( rule__ViewGroup__NameAlternatives_1_0 ) )
+            // InternalDgen.g:1072:1: ( ( ( rule__ViewGroup__NameAlternatives_1_0 ) ) )
+            // InternalDgen.g:1073:2: ( ( rule__ViewGroup__NameAlternatives_1_0 ) )
             {
-            // InternalDgen.g:1027:2: ( ( rule__ViewGroup__NameAlternatives_1_0 ) )
-            // InternalDgen.g:1028:3: ( rule__ViewGroup__NameAlternatives_1_0 )
+            // InternalDgen.g:1073:2: ( ( rule__ViewGroup__NameAlternatives_1_0 ) )
+            // InternalDgen.g:1074:3: ( rule__ViewGroup__NameAlternatives_1_0 )
             {
              before(grammarAccess.getViewGroupAccess().getNameAlternatives_1_0()); 
-            // InternalDgen.g:1029:3: ( rule__ViewGroup__NameAlternatives_1_0 )
-            // InternalDgen.g:1029:4: rule__ViewGroup__NameAlternatives_1_0
+            // InternalDgen.g:1075:3: ( rule__ViewGroup__NameAlternatives_1_0 )
+            // InternalDgen.g:1075:4: rule__ViewGroup__NameAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__ViewGroup__NameAlternatives_1_0();
@@ -3112,21 +3254,21 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__ViewOptions__NameAssignment_1"
-    // InternalDgen.g:1037:1: rule__ViewOptions__NameAssignment_1 : ( ( rule__ViewOptions__NameAlternatives_1_0 ) ) ;
+    // InternalDgen.g:1083:1: rule__ViewOptions__NameAssignment_1 : ( ( rule__ViewOptions__NameAlternatives_1_0 ) ) ;
     public final void rule__ViewOptions__NameAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:1041:1: ( ( ( rule__ViewOptions__NameAlternatives_1_0 ) ) )
-            // InternalDgen.g:1042:2: ( ( rule__ViewOptions__NameAlternatives_1_0 ) )
+            // InternalDgen.g:1087:1: ( ( ( rule__ViewOptions__NameAlternatives_1_0 ) ) )
+            // InternalDgen.g:1088:2: ( ( rule__ViewOptions__NameAlternatives_1_0 ) )
             {
-            // InternalDgen.g:1042:2: ( ( rule__ViewOptions__NameAlternatives_1_0 ) )
-            // InternalDgen.g:1043:3: ( rule__ViewOptions__NameAlternatives_1_0 )
+            // InternalDgen.g:1088:2: ( ( rule__ViewOptions__NameAlternatives_1_0 ) )
+            // InternalDgen.g:1089:3: ( rule__ViewOptions__NameAlternatives_1_0 )
             {
              before(grammarAccess.getViewOptionsAccess().getNameAlternatives_1_0()); 
-            // InternalDgen.g:1044:3: ( rule__ViewOptions__NameAlternatives_1_0 )
-            // InternalDgen.g:1044:4: rule__ViewOptions__NameAlternatives_1_0
+            // InternalDgen.g:1090:3: ( rule__ViewOptions__NameAlternatives_1_0 )
+            // InternalDgen.g:1090:4: rule__ViewOptions__NameAlternatives_1_0
             {
             pushFollow(FOLLOW_2);
             rule__ViewOptions__NameAlternatives_1_0();
@@ -3159,17 +3301,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Views__ViewGroupAssignment_0"
-    // InternalDgen.g:1052:1: rule__Views__ViewGroupAssignment_0 : ( ruleViewGroup ) ;
+    // InternalDgen.g:1098:1: rule__Views__ViewGroupAssignment_0 : ( ruleViewGroup ) ;
     public final void rule__Views__ViewGroupAssignment_0() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:1056:1: ( ( ruleViewGroup ) )
-            // InternalDgen.g:1057:2: ( ruleViewGroup )
+            // InternalDgen.g:1102:1: ( ( ruleViewGroup ) )
+            // InternalDgen.g:1103:2: ( ruleViewGroup )
             {
-            // InternalDgen.g:1057:2: ( ruleViewGroup )
-            // InternalDgen.g:1058:3: ruleViewGroup
+            // InternalDgen.g:1103:2: ( ruleViewGroup )
+            // InternalDgen.g:1104:3: ruleViewGroup
             {
              before(grammarAccess.getViewsAccess().getViewGroupViewGroupParserRuleCall_0_0()); 
             pushFollow(FOLLOW_2);
@@ -3200,17 +3342,17 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
 
 
     // $ANTLR start "rule__Views__ViewOptionAssignment_1"
-    // InternalDgen.g:1067:1: rule__Views__ViewOptionAssignment_1 : ( ruleViewOptions ) ;
+    // InternalDgen.g:1113:1: rule__Views__ViewOptionAssignment_1 : ( ruleViewOptions ) ;
     public final void rule__Views__ViewOptionAssignment_1() throws RecognitionException {
 
         		int stackSize = keepStackSize();
         	
         try {
-            // InternalDgen.g:1071:1: ( ( ruleViewOptions ) )
-            // InternalDgen.g:1072:2: ( ruleViewOptions )
+            // InternalDgen.g:1117:1: ( ( ruleViewOptions ) )
+            // InternalDgen.g:1118:2: ( ruleViewOptions )
             {
-            // InternalDgen.g:1072:2: ( ruleViewOptions )
-            // InternalDgen.g:1073:3: ruleViewOptions
+            // InternalDgen.g:1118:2: ( ruleViewOptions )
+            // InternalDgen.g:1119:3: ruleViewOptions
             {
              before(grammarAccess.getViewsAccess().getViewOptionViewOptionsParserRuleCall_1_0()); 
             pushFollow(FOLLOW_2);
@@ -3254,7 +3396,7 @@ public class InternalDgenParser extends AbstractInternalContentAssistParser {
     public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000001000010L});
     public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000000100000L});
     public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000001000012L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000400000L});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000002400000L});
     public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000001800L});
     public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x000000000001E000L});
 

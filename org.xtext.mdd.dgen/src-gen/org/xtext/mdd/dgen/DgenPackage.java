@@ -225,13 +225,22 @@ public interface DgenPackage extends EPackage
   int FEATURE__NAME = 1;
 
   /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FEATURE__OPTIONAL = 2;
+
+  /**
    * The feature id for the '<em><b>Type</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FEATURE__TYPE = 2;
+  int FEATURE__TYPE = 3;
 
   /**
    * The number of structural features of the '<em>Feature</em>' class.
@@ -240,7 +249,7 @@ public interface DgenPackage extends EPackage
    * @generated
    * @ordered
    */
-  int FEATURE_FEATURE_COUNT = 3;
+  int FEATURE_FEATURE_COUNT = 4;
 
   /**
    * The meta object id for the '{@link org.xtext.mdd.dgen.impl.ViewGroupImpl <em>View Group</em>}' class.
@@ -464,6 +473,17 @@ public interface DgenPackage extends EPackage
   EAttribute getFeature_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link org.xtext.mdd.dgen.Feature#isOptional <em>Optional</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Optional</em>'.
+   * @see org.xtext.mdd.dgen.Feature#isOptional()
+   * @see #getFeature()
+   * @generated
+   */
+  EAttribute getFeature_Optional();
+
+  /**
    * Returns the meta object for the reference '{@link org.xtext.mdd.dgen.Feature#getType <em>Type</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -676,6 +696,14 @@ public interface DgenPackage extends EPackage
      * @generated
      */
     EAttribute FEATURE__NAME = eINSTANCE.getFeature_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute FEATURE__OPTIONAL = eINSTANCE.getFeature_Optional();
 
     /**
      * The meta object literal for the '<em><b>Type</b></em>' reference feature.

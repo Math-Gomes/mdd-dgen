@@ -47,12 +47,12 @@ class DjangoHtmlGenerator extends AbstractGenerator {
         {% extends 'bootstrap/index.html' %}
         {% load crispy_forms_tags %}
         {% block content %}
-            <h1>Criar «e.name»</h1>
+            <h1>«e.name»</h1>
 
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <input name="submit" type="submit" value="Criar" />
+                <input name="submit" class="btn btn-success" type="submit" value="Salvar" />
             </form>
         {% endblock %}
     '''
@@ -69,8 +69,17 @@ class DjangoHtmlGenerator extends AbstractGenerator {
         </head>
         <h1 style="text-align: center">«e.name»</h1>
         <div style="margin: auto; width: 80%;">
-            <a href = "{% url '«e.name.toLowerCase»_add' %}" class="btn btn-success" style="float: right; margin-bottom: 10px; margin-right: 10px;">Criar</a>
+            <a href = "{% url '«e.name.toLowerCase»_add' %}" class="btn btn-success" style="float: right; margin-bottom: 10px; margin-right: 10px;"><i class="fas fa-plus"></i> Criar</a>
         </div>
+        <style>
+            #table_filter > label > input[type="search"] {
+                border: 1px solid grey;
+                border-radius: 4px;
+            }
+            #table_length > label > select {
+                border-radius: 4px;
+            }
+        </style>
         <div style="margin: auto; width: 80%; padding: 10px;">
             <table id="table" class="table table-hover table-bordered" style="width:100%">
                 <thead>
@@ -97,16 +106,16 @@ class DjangoHtmlGenerator extends AbstractGenerator {
                                 }»
                                 «IF what == 'group'»
                                     «IF e.views.viewGroup.name == 'All'»
-                                        <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}">Atualizar</a>
-                                        <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}">Deletar</a>
+                                        <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}" class="btn"><i class="fas fa-edit"></i></a>
+                                        <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}" class="btn"><i class="fas fa-trash"></i></a>
                                     «ENDIF»
                                 «ELSE»
                                     «FOR opt : e.views.viewOption»
                                         «IF opt.name == 'Update'»
-                                            <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}">Atualizar</a>
+                                            <a href="{% url '«e.name.toLowerCase»_update' «e.name.toLowerCase».pk %}" class="btn"><i class="fas fa-edit"></i></a>
                                         «ENDIF»
                                         «IF opt.name == 'Delete'»
-                                            <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}">Deletar</a>
+                                            <a href="{% url '«e.name.toLowerCase»_delete' «e.name.toLowerCase».pk %}" class="btn"><i class="fas fa-trash"></i></a>
                                         «ENDIF»
                                     «ENDFOR»
                                 «ENDIF»

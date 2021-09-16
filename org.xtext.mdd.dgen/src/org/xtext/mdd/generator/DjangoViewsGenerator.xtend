@@ -16,6 +16,8 @@ class DjangoViewsGenerator extends AbstractGenerator {
 		fsa.generateFile("app/views.py", resource.createViews);
 	}
 	
+	//Langium
+	
 	private def createViews(Resource resource)'''
         from django.shortcuts import render, redirect
         from django.views.generic.base import TemplateView

@@ -18,15 +18,14 @@ Entity:
     '}';
 
 Feature:
-    (many?='many')? name=ID ':' type=[Type];
+    (many?='many')? name=ID (optional?='?')? ':' type=[Type];
 
 ViewGroup:
 	'@' name=('All' | 'None');
-	
+
 ViewOptions:
 	'@' name=('Create' | 'Read' | 'Update' | 'Delete');
-	 
+
 Views:
     (viewGroup=ViewGroup) | (viewOption+=ViewOptions)+;
-    
 

@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link org.xtext.mdd.dgen.Feature#isMany <em>Many</em>}</li>
  *   <li>{@link org.xtext.mdd.dgen.Feature#getName <em>Name</em>}</li>
+ *   <li>{@link org.xtext.mdd.dgen.Feature#isOptional <em>Optional</em>}</li>
  *   <li>{@link org.xtext.mdd.dgen.Feature#getType <em>Type</em>}</li>
  * </ul>
  *
@@ -68,6 +69,28 @@ public interface Feature extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Optional</em>' attribute.
+   * @see #setOptional(boolean)
+   * @see org.xtext.mdd.dgen.DgenPackage#getFeature_Optional()
+   * @model
+   * @generated
+   */
+  boolean isOptional();
+
+  /**
+   * Sets the value of the '{@link org.xtext.mdd.dgen.Feature#isOptional <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Optional</em>' attribute.
+   * @see #isOptional()
+   * @generated
+   */
+  void setOptional(boolean value);
 
   /**
    * Returns the value of the '<em><b>Type</b></em>' reference.

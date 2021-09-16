@@ -327,9 +327,23 @@ ruleFeature returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_2=':'
+		(
+			(
+				lv_optional_2_0='?'
+				{
+					newLeafNode(lv_optional_2_0, grammarAccess.getFeatureAccess().getOptionalQuestionMarkKeyword_2_0());
+				}
+				{
+					if ($current==null) {
+						$current = createModelElement(grammarAccess.getFeatureRule());
+					}
+					setWithLastConsumed($current, "optional", lv_optional_2_0 != null, "?");
+				}
+			)
+		)?
+		otherlv_3=':'
 		{
-			newLeafNode(otherlv_2, grammarAccess.getFeatureAccess().getColonKeyword_2());
+			newLeafNode(otherlv_3, grammarAccess.getFeatureAccess().getColonKeyword_3());
 		}
 		(
 			(
@@ -338,9 +352,9 @@ ruleFeature returns [EObject current=null]
 						$current = createModelElement(grammarAccess.getFeatureRule());
 					}
 				}
-				otherlv_3=RULE_ID
+				otherlv_4=RULE_ID
 				{
-					newLeafNode(otherlv_3, grammarAccess.getFeatureAccess().getTypeTypeCrossReference_3_0());
+					newLeafNode(otherlv_4, grammarAccess.getFeatureAccess().getTypeTypeCrossReference_4_0());
 				}
 			)
 		)

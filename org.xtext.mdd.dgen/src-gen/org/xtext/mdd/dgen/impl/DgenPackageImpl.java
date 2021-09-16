@@ -286,9 +286,20 @@ public class DgenPackageImpl extends EPackageImpl implements DgenPackage
    * @generated
    */
   @Override
+  public EAttribute getFeature_Optional()
+  {
+    return (EAttribute)featureEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EReference getFeature_Type()
   {
-    return (EReference)featureEClass.getEStructuralFeatures().get(2);
+    return (EReference)featureEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -415,6 +426,7 @@ public class DgenPackageImpl extends EPackageImpl implements DgenPackage
     featureEClass = createEClass(FEATURE);
     createEAttribute(featureEClass, FEATURE__MANY);
     createEAttribute(featureEClass, FEATURE__NAME);
+    createEAttribute(featureEClass, FEATURE__OPTIONAL);
     createEReference(featureEClass, FEATURE__TYPE);
 
     viewGroupEClass = createEClass(VIEW_GROUP);
@@ -477,6 +489,7 @@ public class DgenPackageImpl extends EPackageImpl implements DgenPackage
     initEClass(featureEClass, Feature.class, "Feature", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getFeature_Many(), ecorePackage.getEBoolean(), "many", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFeature_Name(), ecorePackage.getEString(), "name", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getFeature_Optional(), ecorePackage.getEBoolean(), "optional", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFeature_Type(), this.getType(), null, "type", null, 0, 1, Feature.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(viewGroupEClass, ViewGroup.class, "ViewGroup", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -49,7 +49,8 @@ public class DgenParser extends AbstractContentAssistParser {
 			builder.put(grammarAccess.getEntityAccess().getFeaturesAssignment_5(), "rule__Entity__FeaturesAssignment_5");
 			builder.put(grammarAccess.getFeatureAccess().getManyAssignment_0(), "rule__Feature__ManyAssignment_0");
 			builder.put(grammarAccess.getFeatureAccess().getNameAssignment_1(), "rule__Feature__NameAssignment_1");
-			builder.put(grammarAccess.getFeatureAccess().getTypeAssignment_3(), "rule__Feature__TypeAssignment_3");
+			builder.put(grammarAccess.getFeatureAccess().getOptionalAssignment_2(), "rule__Feature__OptionalAssignment_2");
+			builder.put(grammarAccess.getFeatureAccess().getTypeAssignment_4(), "rule__Feature__TypeAssignment_4");
 			builder.put(grammarAccess.getViewGroupAccess().getNameAssignment_1(), "rule__ViewGroup__NameAssignment_1");
 			builder.put(grammarAccess.getViewOptionsAccess().getNameAssignment_1(), "rule__ViewOptions__NameAssignment_1");
 			builder.put(grammarAccess.getViewsAccess().getViewGroupAssignment_0(), "rule__Views__ViewGroupAssignment_0");

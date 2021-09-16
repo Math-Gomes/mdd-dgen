@@ -101,37 +101,85 @@ public class DjangoModelsGenerator extends AbstractGenerator {
         _builder.append("models.ManyToManyField(");
         String _name = f.getType().getName();
         _builder.append(_name);
+        {
+          boolean _isOptional = f.isOptional();
+          if (_isOptional) {
+            _builder.append(", blank=True, null=True");
+          }
+        }
         _builder.append(")");
       } else {
         String _name_1 = f.getType().getName();
         boolean _equals = Objects.equal(_name_1, "String");
         if (_equals) {
-          _builder.append("models.CharField(max_length=200)");
+          _builder.append("models.CharField(max_length=200");
+          {
+            boolean _isOptional_1 = f.isOptional();
+            if (_isOptional_1) {
+              _builder.append(", blank=True");
+            }
+          }
+          _builder.append(")");
         } else {
           String _name_2 = f.getType().getName();
           boolean _equals_1 = Objects.equal(_name_2, "Int");
           if (_equals_1) {
-            _builder.append("models.BigIntegerField()");
+            _builder.append("models.BigIntegerField(");
+            {
+              boolean _isOptional_2 = f.isOptional();
+              if (_isOptional_2) {
+                _builder.append("blank=True");
+              }
+            }
+            _builder.append(")");
           } else {
             String _name_3 = f.getType().getName();
             boolean _equals_2 = Objects.equal(_name_3, "Float");
             if (_equals_2) {
-              _builder.append("models.FloatField()");
+              _builder.append("models.FloatField(");
+              {
+                boolean _isOptional_3 = f.isOptional();
+                if (_isOptional_3) {
+                  _builder.append("blank=True");
+                }
+              }
+              _builder.append(")");
             } else {
               String _name_4 = f.getType().getName();
               boolean _equals_3 = Objects.equal(_name_4, "Bool");
               if (_equals_3) {
-                _builder.append("models.BooleanField()");
+                _builder.append("models.BooleanField(");
+                {
+                  boolean _isOptional_4 = f.isOptional();
+                  if (_isOptional_4) {
+                    _builder.append("blank=True");
+                  }
+                }
+                _builder.append(")");
               } else {
                 String _name_5 = f.getType().getName();
                 boolean _equals_4 = Objects.equal(_name_5, "Date");
                 if (_equals_4) {
-                  _builder.append("models.DateTimeField(default=timezone.now)");
+                  _builder.append("models.DateTimeField(default=timezone.now");
+                  {
+                    boolean _isOptional_5 = f.isOptional();
+                    if (_isOptional_5) {
+                      _builder.append(", blank=True, null=True");
+                    }
+                  }
+                  _builder.append(")");
                 } else {
                   _builder.append("models.ForeignKey(\'");
                   String _name_6 = f.getType().getName();
                   _builder.append(_name_6);
-                  _builder.append("\', on_delete=models.CASCADE)");
+                  _builder.append("\', on_delete=models.CASCADE");
+                  {
+                    boolean _isOptional_6 = f.isOptional();
+                    if (_isOptional_6) {
+                      _builder.append(", blank=True, null=True");
+                    }
+                  }
+                  _builder.append(")");
                 }
               }
             }

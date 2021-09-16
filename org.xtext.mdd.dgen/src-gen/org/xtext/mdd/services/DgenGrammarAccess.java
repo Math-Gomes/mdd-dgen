@@ -160,16 +160,18 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		private final Keyword cManyManyKeyword_0_0 = (Keyword)cManyAssignment_0.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cColonKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cTypeAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final CrossReference cTypeTypeCrossReference_3_0 = (CrossReference)cTypeAssignment_3.eContents().get(0);
-		private final RuleCall cTypeTypeIDTerminalRuleCall_3_0_1 = (RuleCall)cTypeTypeCrossReference_3_0.eContents().get(1);
+		private final Assignment cOptionalAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final Keyword cOptionalQuestionMarkKeyword_2_0 = (Keyword)cOptionalAssignment_2.eContents().get(0);
+		private final Keyword cColonKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Assignment cTypeAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final CrossReference cTypeTypeCrossReference_4_0 = (CrossReference)cTypeAssignment_4.eContents().get(0);
+		private final RuleCall cTypeTypeIDTerminalRuleCall_4_0_1 = (RuleCall)cTypeTypeCrossReference_4_0.eContents().get(1);
 		
 		//Feature:
-		//    (many?='many')? name=ID ':' type=[Type];
+		//    (many?='many')? name=ID (optional?='?')? ':' type=[Type];
 		@Override public ParserRule getRule() { return rule; }
 		
-		//(many?='many')? name=ID ':' type=[Type]
+		//(many?='many')? name=ID (optional?='?')? ':' type=[Type]
 		public Group getGroup() { return cGroup; }
 		
 		//(many?='many')?
@@ -184,17 +186,23 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 		
+		//(optional?='?')?
+		public Assignment getOptionalAssignment_2() { return cOptionalAssignment_2; }
+		
+		//'?'
+		public Keyword getOptionalQuestionMarkKeyword_2_0() { return cOptionalQuestionMarkKeyword_2_0; }
+		
 		//':'
-		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
+		public Keyword getColonKeyword_3() { return cColonKeyword_3; }
 		
 		//type=[Type]
-		public Assignment getTypeAssignment_3() { return cTypeAssignment_3; }
+		public Assignment getTypeAssignment_4() { return cTypeAssignment_4; }
 		
 		//[Type]
-		public CrossReference getTypeTypeCrossReference_3_0() { return cTypeTypeCrossReference_3_0; }
+		public CrossReference getTypeTypeCrossReference_4_0() { return cTypeTypeCrossReference_4_0; }
 		
 		//ID
-		public RuleCall getTypeTypeIDTerminalRuleCall_3_0_1() { return cTypeTypeIDTerminalRuleCall_3_0_1; }
+		public RuleCall getTypeTypeIDTerminalRuleCall_4_0_1() { return cTypeTypeIDTerminalRuleCall_4_0_1; }
 	}
 	public class ViewGroupElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.mdd.Dgen.ViewGroup");
@@ -394,7 +402,7 @@ public class DgenGrammarAccess extends AbstractElementFinder.AbstractGrammarElem
 	}
 	
 	//Feature:
-	//    (many?='many')? name=ID ':' type=[Type];
+	//    (many?='many')? name=ID (optional?='?')? ':' type=[Type];
 	public FeatureElements getFeatureAccess() {
 		return pFeature;
 	}

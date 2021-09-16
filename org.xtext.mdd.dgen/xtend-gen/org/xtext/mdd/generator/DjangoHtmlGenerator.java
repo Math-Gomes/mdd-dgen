@@ -112,7 +112,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("{% block content %}");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("<h1>Criar ");
+    _builder.append("<h1>");
     String _name = e.getName();
     _builder.append(_name, "    ");
     _builder.append("</h1>");
@@ -128,7 +128,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("{{ form|crispy }}");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("<input name=\"submit\" type=\"submit\" value=\"Criar\" />");
+    _builder.append("<input name=\"submit\" class=\"btn btn-success\" type=\"submit\" value=\"Salvar\" />");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("</form>");
@@ -173,9 +173,34 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("<a href = \"{% url \'");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "    ");
-    _builder.append("_add\' %}\" class=\"btn btn-success\" style=\"float: right; margin-bottom: 10px; margin-right: 10px;\">Criar</a>");
+    _builder.append("_add\' %}\" class=\"btn btn-success\" style=\"float: right; margin-bottom: 10px; margin-right: 10px;\"><i class=\"fas fa-plus\"></i> Criar</a>");
     _builder.newLineIfNotEmpty();
     _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("<style>");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("#table_filter > label > input[type=\"search\"] {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("border: 1px solid grey;");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("border-radius: 4px;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("#table_length > label > select {");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("border-radius: 4px;");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("</style>");
     _builder.newLine();
     _builder.append("<div style=\"margin: auto; width: 80%; padding: 10px;\">");
     _builder.newLine();
@@ -276,7 +301,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
             _builder.append("_update\' ");
             String _lowerCase_6 = e.getName().toLowerCase();
             _builder.append(_lowerCase_6, "                        ");
-            _builder.append(".pk %}\">Atualizar</a>");
+            _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-edit\"></i></a>");
             _builder.newLineIfNotEmpty();
             _builder.append("                        ");
             _builder.append("<a href=\"{% url \'");
@@ -285,7 +310,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
             _builder.append("_delete\' ");
             String _lowerCase_8 = e.getName().toLowerCase();
             _builder.append(_lowerCase_8, "                        ");
-            _builder.append(".pk %}\">Deletar</a>");
+            _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-trash\"></i></a>");
             _builder.newLineIfNotEmpty();
           }
         }
@@ -304,7 +329,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
                 _builder.append("_update\' ");
                 String _lowerCase_10 = e.getName().toLowerCase();
                 _builder.append(_lowerCase_10, "                        ");
-                _builder.append(".pk %}\">Atualizar</a>");
+                _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-edit\"></i></a>");
                 _builder.newLineIfNotEmpty();
               }
             }
@@ -319,7 +344,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
                 _builder.append("_delete\' ");
                 String _lowerCase_12 = e.getName().toLowerCase();
                 _builder.append(_lowerCase_12, "                        ");
-                _builder.append(".pk %}\">Deletar</a>");
+                _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-trash\"></i></a>");
                 _builder.newLineIfNotEmpty();
               }
             }

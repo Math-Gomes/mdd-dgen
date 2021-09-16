@@ -113,7 +113,7 @@ public class DgenSemanticSequencer extends AbstractDelegatingSemanticSequencer {
 	 *     Feature returns Feature
 	 *
 	 * Constraint:
-	 *     (many?='many'? name=ID type=[Type|ID])
+	 *     (many?='many'? name=ID optional?='?'? type=[Type|ID])
 	 */
 	protected void sequence_Feature(ISerializationContext context, Feature semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);

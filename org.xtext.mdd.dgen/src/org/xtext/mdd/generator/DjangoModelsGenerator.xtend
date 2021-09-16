@@ -45,13 +45,13 @@ class DjangoModelsGenerator extends AbstractGenerator {
 
     private def createAttributes(Feature f)'''
         «f.name.toLowerCase» = «
-        IF f.many                      »models.ManyToManyField(«f.type.name»)«
-        ELSEIF f.type.name == "String" »models.CharField(max_length=200)«
-        ELSEIF f.type.name == "Int"    »models.BigIntegerField()«
-        ELSEIF f.type.name == "Float"  »models.FloatField()«
-        ELSEIF f.type.name == "Bool"   »models.BooleanField()«
-        ELSEIF f.type.name == "Date"   »models.DateTimeField(default=timezone.now)«
-        ELSE                           »models.ForeignKey('«f.type.name»', on_delete=models.CASCADE)«
+        IF f.many                      »models.ManyToManyField(«f.type.name»«IF f.optional», blank=True, null=True«ENDIF»)«
+        ELSEIF f.type.name == "String" »models.CharField(max_length=200«IF f.optional», blank=True«ENDIF»)«
+        ELSEIF f.type.name == "Int"    »models.BigIntegerField(«IF f.optional»blank=True«ENDIF»)«
+        ELSEIF f.type.name == "Float"  »models.FloatField(«IF f.optional»blank=True«ENDIF»)«
+        ELSEIF f.type.name == "Bool"   »models.BooleanField(«IF f.optional»blank=True«ENDIF»)«
+        ELSEIF f.type.name == "Date"   »models.DateTimeField(default=timezone.now«IF f.optional», blank=True, null=True«ENDIF»)«
+        ELSE                           »models.ForeignKey('«f.type.name»', on_delete=models.CASCADE«IF f.optional», blank=True, null=True«ENDIF»)«
         ENDIF»
     '''
 }
