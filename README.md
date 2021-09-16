@@ -36,7 +36,7 @@ Uma nova aba do _eclipse_ será aberta. É nela que iremos criar e escrever o ar
 Primeiramente, devemos criar um novo _Projeto Java_.
 
 - `File` -> `New` -> `Other` -> `Java Project` -> `Next` -> [_Dar um nome ao Projeto_] -> `Finish` -> `Create`
-- **<CRIAR O ARQUIVO .dgen DE ALGUMA FORMA>**
+- Clicar com o botão direito sobre o diretório `src` -> `New` -> `File` -> [_Criar o arquivo_ `<filename.dgen>`] -> `Ok, next, next...`
 
 Exemplo de um modelo em _DGen_:
 ```
@@ -73,7 +73,7 @@ Para executar a aplicação _Django_ que foi gerada, devemos usar os seguintes c
 
 ```bash
 # Executar o script que criamos para instalar algumas dependências do projeto...
-./scripts/init
+> ./scripts/init.sh
 
 # Para entrar no env...
 > cd src-gen
@@ -93,3 +93,7 @@ python manage.py makemigrations app
 python manage.py migrate
 ```
 
+Além disso, também criamos um script para facilitar a inicialização do servidor. Basta executar o comando:
+```bash
+> ./scripts/run.sh
+```

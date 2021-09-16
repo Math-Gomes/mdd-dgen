@@ -14,7 +14,8 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		fsa.generateFile("app/templates/bootstrap/index.html", resource.createIndex);
-		
+		fsa.generateFile("app/templates/bootstrap/login.html", resource.createLogin);
+		fsa.generateFile("app/templates/bootstrap/register.html", resource.createRegister);
 	}
 	
 	private def createIndex(Resource resource)'''
@@ -36,7 +37,7 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		  <!-- Custom fonts for this template-->
 		  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 		  <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
-		
+		  <link rel="icon" type="image/png" href="https://i.imgur.com/tZHHQj3.png"/>
 		  <!-- Custom styles for this template-->
 		  <link href="{% static 'css/styles.css' %}" rel="stylesheet">
 		  <link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
@@ -52,7 +53,7 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		    <ul class="navbar-nav sidebar sidebar-dark" id="dgen-sb">
 		
 		      <!-- Sidebar - Brand -->
-		      <a class="sidebar-brand d-flex align-items-center justify-content-center" id="dgen-sb-brand">
+		      <a class="sidebar-brand d-flex align-items-center justify-content-center" id="dgen-sb-brand" href="{% url 'home' %}">
 		        <div class="sidebar-brand-icon">
 		          <i class="fas fa-project-diagram"></i>
 		        </div>
@@ -289,8 +290,7 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 		                <span class="mr-2 d-none d-lg-inline text-gray-600 small">
 		                {% if user.is_authenticated %}
-		                  {{ user.first_name }}
-		                  {{ user.last_name }}
+		                  {{ user.username }}
 		                {% else %}
 		                  Usuário não logado
 		                {% endif %}</span>
@@ -298,17 +298,9 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		              </a>
 		              <!-- Dropdown - User Information -->
 		              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-		                <a class="dropdown-item" href="#">
-		                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
-		                  Profile
-		                </a>
-		                <a class="dropdown-item" href="#">
-		                  <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-		                  Settings
-		                </a>
-		                <a class="dropdown-item" href="#">
-		                  <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-		                  Activity Log
+		                <a class="dropdown-item" href="{% url 'home' %}">
+		                  <i class="fas fa-home fa-sm fa-fw mr-2 text-gray-400"></i>
+		                  Home
 		                </a>
 		                <div class="dropdown-divider"></div>
 		                <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal">
@@ -346,13 +338,7 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		      <!-- End of Main Content -->
 		
 		      <!-- Footer -->
-		      <footer class="sticky-footer bg-white">
-		        <div class="container my-auto">
-		          <div class="copyright text-center my-auto">
-		            <span>Copyright &copy; Dgen 2021</span>
-		          </div>
-		        </div>
-		      </footer>
+		      
 		      <!-- End of Footer -->
 		
 		    </div>
@@ -379,7 +365,7 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		        <div class="modal-body">Escolha "Logout" abaixo se você está pronto para finalizar a sessão atual.</div>
 		        <div class="modal-footer">
 		          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-		          <a class="btn btn-primary">Logout</a>
+		          <a class="btn btn-primary" href="{% url 'logout' %}">Logout</a>
 		        </div>
 		      </div>
 		    </div>
@@ -409,4 +395,212 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		
 	'''
 
+	private def createLogin(Resource resource)'''
+		<!DOCTYPE html>
+
+		{% load static %}
+
+		{% load crispy_forms_tags %}
+		<html lang="en">
+
+		<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Login</title>
+
+		<!-- Custom fonts for this template-->
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+		<!-- Custom styles for this template-->
+		<link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+		</head>
+
+		<style>
+		.bg-gradient-primary {
+			background-color: #153e5c;
+			background-image: linear-gradient(180deg, #153e5c 10%, #191a1d 100%);
+			background-size: cover;
+		}
+
+		.bg-login-image{
+			background-image: url("https://www.infoq.com/i18n/software-architecture-trends-2019/styles/illustration.svg");
+		}
+
+		</style>
+
+		<body class="bg-gradient-primary">
+
+		<div class="container">
+
+			<!-- Outer Row -->
+			<div class="row justify-content-center">
+
+			<div class="col-xl-10 col-lg-12 col-md-9">
+
+				<div class="card o-hidden border-0 shadow-lg my-5">
+				<div class="card-body p-0">
+					<!-- Nested Row within Card Body -->
+					<div class="row">
+					<div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+					<div class="col-lg-6">
+						<div class="p-5">
+						<div class="text-center">
+							<h1 class="h4 text-gray-900 mb-4">Bem vindo!</h1>
+						</div>
+						{% block content %}
+							{% if form.errors %}
+							<p id="error_wrong_user_or_pass" style="color: red;">Usuário ou senha incorretos. Tente novamente.</p>
+							{% endif %}
+							{% if next %}
+								{% if user.is_authenticated %}
+								<p>Sua conta não possui acesso à essa página. Para continuar
+								faça login com uma conta que possua acesso.</p>
+								{% else %}
+								<p>Favor fazer o login para acessar essa página.</p>
+								{% endif %}
+							{% endif %}
+							<form method="post" action="{% url 'login' %}">
+							{% csrf_token %}
+								<p>{{ form.username|as_crispy_field }}</p>
+								<p>{{ form.password|as_crispy_field }}</p>
+							<input type="submit" name="submit" value="Login" class="btn btn-primary btn-user btn-block">
+							<input type="hidden" name="next" value="{{ next }}">
+							</form>
+							{% comment %} <p><a href="{% url 'password_reset' %}">Lost password?</a></p> {% endcomment %}
+						{% endblock %}
+						<hr>
+						<!-- <div class="text-center">
+							<a class="small" href="forgot-password.html">Forgot Password?</a>
+						</div> -->
+						<div class="text-center">
+							<a class="small" href="{% url 'signup' %}">Criar uma Conta!</a>
+						</div>
+						</div>
+					</div>
+					</div>
+				</div>
+				</div>
+
+			</div>
+
+			</div>
+
+		</div>
+
+		<!-- Bootstrap core JavaScript-->
+		<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+		</body>
+
+		</html>
+
+	'''
+
+	private def createRegister(Resource resource)'''
+		<!DOCTYPE html>
+
+		{% load static %}
+
+		{% load crispy_forms_tags %}
+		<html lang="en">
+
+		<head>
+
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="">
+
+		<title>Registre-se</title>
+
+		<!-- Custom fonts for this template-->
+		<link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+		<link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+		<!-- Custom styles for this template-->
+		<link href="{% static 'css/sb-admin-2.min.css' %}" rel="stylesheet">
+
+		</head>
+
+		<style>
+		.bg-gradient-primary {
+			background-color: #153e5c;
+			background-image: linear-gradient(180deg, #153e5c 10%, #191a1d 100%);
+			background-size: cover;
+		}
+
+		.bg-register-image{
+			background-image: url("https://images.pexels.com/photos/1978126/pexels-photo-1978126.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500");
+		}
+		
+
+		</style>
+
+		<body class="bg-gradient-primary">
+
+		<div class="container">
+
+			<div class="card o-hidden border-0 shadow-lg my-5">
+			<div class="card-body p-0">
+				<!-- Nested Row within Card Body -->
+				<div class="row">
+				<div class="col-lg-5 d-none d-lg-block bg-register-image"></div>
+				<div class="col-lg-7">
+					<div class="p-5">
+					<div class="text-center">
+						<h1 class="h4 text-gray-900 mb-4">Crie uma conta!</h1>
+					</div>
+					{% block content %}
+						<form method="post">
+						{% csrf_token %}
+						{% for field in form %}
+							<p>
+							{{ field|as_crispy_field }}
+							</p>
+						{% endfor %}
+						<button class="btn btn-primary btn-user btn-block" type="submit">Registrar</button>
+						</form>
+					{% endblock %}
+					<hr>
+					<div class="text-center">
+						<a class="small" href="{% url 'login' %}">Já tem uma conta? Entre!</a>
+					</div>
+					</div>
+				</div>
+				</div>
+			</div>
+			</div>
+
+		</div>
+
+		<!-- Bootstrap core JavaScript-->
+		<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+		<script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+
+		<!-- Core plugin JavaScript-->
+		<script src="{% static 'vendor/jquery-easing/jquery.easing.min.js' %}"></script>
+
+		<!-- Custom scripts for all pages-->
+		<script src="{% static 'js/sb-admin-2.min.js' %}"></script>
+
+		</body>
+
+		</html>
+
+	'''
 }

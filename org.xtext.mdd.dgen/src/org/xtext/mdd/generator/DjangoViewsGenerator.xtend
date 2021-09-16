@@ -16,8 +16,6 @@ class DjangoViewsGenerator extends AbstractGenerator {
 		fsa.generateFile("app/views.py", resource.createViews);
 	}
 	
-	//Langium
-	
 	private def createViews(Resource resource)'''
         from django.shortcuts import render, redirect
         from django.views.generic.base import TemplateView
@@ -25,8 +23,9 @@ class DjangoViewsGenerator extends AbstractGenerator {
         from django.views.generic.list import ListView
         from .models import «FOR e : resource.allContents.toIterable.filter(Entity) SEPARATOR ', '»«e.fullyQualifiedName»«ENDFOR»
         from django.urls import reverse_lazy
+        from django.contrib.auth.mixins import LoginRequiredMixin
 
-        class Home(TemplateView):
+        class Home(LoginRequiredMixin, TemplateView):
             template_name = 'bootstrap/index.html'
 
         «FOR entity : resource.allContents.toIterable.filter(Entity)»
@@ -61,7 +60,7 @@ class DjangoViewsGenerator extends AbstractGenerator {
     '''
     
     private def createView(Entity e)'''
-        class «e.fullyQualifiedName»Create(CreateView):
+        class «e.fullyQualifiedName»Create(LoginRequiredMixin, CreateView):
             model = «e.fullyQualifiedName»
             fields = '__all__'
             success_url = reverse_lazy('«e.name.toLowerCase»_read')
@@ -69,14 +68,14 @@ class DjangoViewsGenerator extends AbstractGenerator {
     '''
 
     private def readView(Entity e) '''
-        class «e.fullyQualifiedName»Read(ListView):
+        class «e.fullyQualifiedName»Read(LoginRequiredMixin, ListView):
             model = «e.fullyQualifiedName»
             template_name = "app/«e.name.toLowerCase»_read.html"
 
     '''
 
     private def updateView(Entity e)'''
-        class «e.fullyQualifiedName»Update(UpdateView):
+        class «e.fullyQualifiedName»Update(LoginRequiredMixin, UpdateView):
             model = «e.fullyQualifiedName»
             fields = '__all__'
             success_url = reverse_lazy('«e.name.toLowerCase»_read')
@@ -84,7 +83,7 @@ class DjangoViewsGenerator extends AbstractGenerator {
     '''
 
     private def deleteView(Entity e)'''
-        class «e.fullyQualifiedName»Delete(DeleteView):
+        class «e.fullyQualifiedName»Delete(LoginRequiredMixin, DeleteView):
             model = «e.fullyQualifiedName»
             success_url = reverse_lazy('«e.name.toLowerCase»_read')
 

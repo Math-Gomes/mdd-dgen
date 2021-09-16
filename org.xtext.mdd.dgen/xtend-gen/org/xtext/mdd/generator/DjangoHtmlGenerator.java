@@ -224,6 +224,23 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
         _builder.newLineIfNotEmpty();
       }
     }
+    {
+      Entity _superType = e.getSuperType();
+      boolean _tripleNotEquals = (_superType != null);
+      if (_tripleNotEquals) {
+        {
+          EList<Feature> _features_1 = e.getSuperType().getFeatures();
+          for(final Feature f_1 : _features_1) {
+            _builder.append("                ");
+            _builder.append("<th>");
+            String _name_2 = f_1.getName();
+            _builder.append(_name_2, "                ");
+            _builder.append("</th>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
     _builder.append("                ");
     _builder.append("<th>Ações</th>");
     _builder.newLine();
@@ -249,17 +266,37 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("<tr>");
     _builder.newLine();
     {
-      EList<Feature> _features_1 = e.getFeatures();
-      for(final Feature f_1 : _features_1) {
+      EList<Feature> _features_2 = e.getFeatures();
+      for(final Feature f_2 : _features_2) {
         _builder.append("                    ");
         _builder.append("<td>{{ ");
         String _lowerCase_3 = e.getName().toLowerCase();
         _builder.append(_lowerCase_3, "                    ");
         _builder.append(".");
-        String _lowerCase_4 = f_1.getName().toLowerCase();
+        String _lowerCase_4 = f_2.getName().toLowerCase();
         _builder.append(_lowerCase_4, "                    ");
         _builder.append(" }}</td>");
         _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      Entity _superType_1 = e.getSuperType();
+      boolean _tripleNotEquals_1 = (_superType_1 != null);
+      if (_tripleNotEquals_1) {
+        {
+          EList<Feature> _features_3 = e.getSuperType().getFeatures();
+          for(final Feature f_3 : _features_3) {
+            _builder.append("                    ");
+            _builder.append("<td>{{ ");
+            String _lowerCase_5 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_5, "                    ");
+            _builder.append(".");
+            String _lowerCase_6 = f_3.getName().toLowerCase();
+            _builder.append(_lowerCase_6, "                    ");
+            _builder.append(" }}</td>");
+            _builder.newLineIfNotEmpty();
+          }
+        }
       }
     }
     _builder.append("                    ");
@@ -291,25 +328,25 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
       boolean _equals = Objects.equal(what, "group");
       if (_equals) {
         {
-          String _name_2 = e.getViews().getViewGroup().getName();
-          boolean _equals_1 = Objects.equal(_name_2, "All");
+          String _name_3 = e.getViews().getViewGroup().getName();
+          boolean _equals_1 = Objects.equal(_name_3, "All");
           if (_equals_1) {
-            _builder.append("                        ");
-            _builder.append("<a href=\"{% url \'");
-            String _lowerCase_5 = e.getName().toLowerCase();
-            _builder.append(_lowerCase_5, "                        ");
-            _builder.append("_update\' ");
-            String _lowerCase_6 = e.getName().toLowerCase();
-            _builder.append(_lowerCase_6, "                        ");
-            _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-edit\"></i></a>");
-            _builder.newLineIfNotEmpty();
             _builder.append("                        ");
             _builder.append("<a href=\"{% url \'");
             String _lowerCase_7 = e.getName().toLowerCase();
             _builder.append(_lowerCase_7, "                        ");
-            _builder.append("_delete\' ");
+            _builder.append("_update\' ");
             String _lowerCase_8 = e.getName().toLowerCase();
             _builder.append(_lowerCase_8, "                        ");
+            _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-edit\"></i></a>");
+            _builder.newLineIfNotEmpty();
+            _builder.append("                        ");
+            _builder.append("<a href=\"{% url \'");
+            String _lowerCase_9 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_9, "                        ");
+            _builder.append("_delete\' ");
+            String _lowerCase_10 = e.getName().toLowerCase();
+            _builder.append(_lowerCase_10, "                        ");
             _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-trash\"></i></a>");
             _builder.newLineIfNotEmpty();
           }
@@ -319,31 +356,31 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
           EList<ViewOptions> _viewOption = e.getViews().getViewOption();
           for(final ViewOptions opt : _viewOption) {
             {
-              String _name_3 = opt.getName();
-              boolean _equals_2 = Objects.equal(_name_3, "Update");
+              String _name_4 = opt.getName();
+              boolean _equals_2 = Objects.equal(_name_4, "Update");
               if (_equals_2) {
                 _builder.append("                        ");
                 _builder.append("<a href=\"{% url \'");
-                String _lowerCase_9 = e.getName().toLowerCase();
-                _builder.append(_lowerCase_9, "                        ");
+                String _lowerCase_11 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_11, "                        ");
                 _builder.append("_update\' ");
-                String _lowerCase_10 = e.getName().toLowerCase();
-                _builder.append(_lowerCase_10, "                        ");
+                String _lowerCase_12 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_12, "                        ");
                 _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-edit\"></i></a>");
                 _builder.newLineIfNotEmpty();
               }
             }
             {
-              String _name_4 = opt.getName();
-              boolean _equals_3 = Objects.equal(_name_4, "Delete");
+              String _name_5 = opt.getName();
+              boolean _equals_3 = Objects.equal(_name_5, "Delete");
               if (_equals_3) {
                 _builder.append("                        ");
                 _builder.append("<a href=\"{% url \'");
-                String _lowerCase_11 = e.getName().toLowerCase();
-                _builder.append(_lowerCase_11, "                        ");
+                String _lowerCase_13 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_13, "                        ");
                 _builder.append("_delete\' ");
-                String _lowerCase_12 = e.getName().toLowerCase();
-                _builder.append(_lowerCase_12, "                        ");
+                String _lowerCase_14 = e.getName().toLowerCase();
+                _builder.append(_lowerCase_14, "                        ");
                 _builder.append(".pk %}\" class=\"btn\"><i class=\"fas fa-trash\"></i></a>");
                 _builder.newLineIfNotEmpty();
               }

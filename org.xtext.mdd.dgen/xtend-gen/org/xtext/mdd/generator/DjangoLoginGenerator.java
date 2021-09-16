@@ -1,0 +1,128 @@
+package org.xtext.mdd.generator;
+
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
+import org.eclipse.xtext.generator.AbstractGenerator;
+import org.eclipse.xtext.generator.IFileSystemAccess2;
+import org.eclipse.xtext.generator.IGeneratorContext;
+
+@SuppressWarnings("all")
+public class DjangoLoginGenerator extends AbstractGenerator {
+  @Override
+  public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    fsa.generateFile("app/login.py", this.createLogin(resource));
+  }
+  
+  private CharSequence createLogin(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("from django import forms");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth.forms import UserCreationForm");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth.models import User");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("# Autenticação de usuário");
+    _builder.newLine();
+    _builder.append("from django.shortcuts import render, redirect");
+    _builder.newLine();
+    _builder.append("from django.urls import reverse_lazy");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth import login, authenticate");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth.forms import UserCreationForm");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth.views import LoginView");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth import logout");
+    _builder.newLine();
+    _builder.append("from django.contrib.auth.mixins import LoginRequiredMixin");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("class SignUpForm(UserCreationForm):");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("email = forms.EmailField(max_length=254)");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("class Meta:");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("model = User");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("fields = (\'username\', \'email\', \'password1\', \'password2\', )");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("def SignUpView(request):");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("if request.method == \'POST\':");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("form = SignUpForm(request.POST)");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("if form.is_valid():");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("form.save()");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("username = form.cleaned_data.get(\'username\')");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("raw_password = form.cleaned_data.get(\'password1\')");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("user = authenticate(username=username, password=raw_password)");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("login(request, user)");
+    _builder.newLine();
+    _builder.append("            ");
+    _builder.append("return redirect(\'home\')");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("else:");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("form = SignUpForm()");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("return render(request, \'bootstrap/register.html\', {\'form\': form})");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("## Login");
+    _builder.newLine();
+    _builder.append("class LoginUserView(LoginView):");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("template_name = \"bootstrap/login.html\"");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("def get_success_url(self):");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("return reverse_lazy(\"home\")");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("## Logout");
+    _builder.newLine();
+    _builder.append("def LogoutView(request):");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("logout(request)");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("return redirect(\'login\')");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.newLine();
+    return _builder;
+  }
+}

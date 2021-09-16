@@ -56,8 +56,10 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.newLineIfNotEmpty();
     _builder.append("from django.urls import reverse_lazy");
     _builder.newLine();
+    _builder.append("from django.contrib.auth.mixins import LoginRequiredMixin");
     _builder.newLine();
-    _builder.append("class Home(TemplateView):");
+    _builder.newLine();
+    _builder.append("class Home(LoginRequiredMixin, TemplateView):");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("template_name = \'bootstrap/index.html\'");
@@ -159,7 +161,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("class ");
     QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
     _builder.append(_fullyQualifiedName);
-    _builder.append("Create(CreateView):");
+    _builder.append("Create(LoginRequiredMixin, CreateView):");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("model = ");
@@ -184,7 +186,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("class ");
     QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
     _builder.append(_fullyQualifiedName);
-    _builder.append("Read(ListView):");
+    _builder.append("Read(LoginRequiredMixin, ListView):");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("model = ");
@@ -206,7 +208,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("class ");
     QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
     _builder.append(_fullyQualifiedName);
-    _builder.append("Update(UpdateView):");
+    _builder.append("Update(LoginRequiredMixin, UpdateView):");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("model = ");
@@ -231,7 +233,7 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("class ");
     QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e);
     _builder.append(_fullyQualifiedName);
-    _builder.append("Delete(DeleteView):");
+    _builder.append("Delete(LoginRequiredMixin, DeleteView):");
     _builder.newLineIfNotEmpty();
     _builder.append("    ");
     _builder.append("model = ");

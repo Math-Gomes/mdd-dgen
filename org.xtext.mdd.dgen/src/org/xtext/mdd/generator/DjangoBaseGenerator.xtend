@@ -17,6 +17,7 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		fsa.generateFile("requirements.txt", resource.createRequirements)
 		
 		fsa.generateFile("scripts/init.sh", resource.createInit);
+		fsa.generateFile("scripts/run.sh", resource.createRun);
 		
 		fsa.generateFile("app/admin.py", resource.createAdmin);
 		fsa.generateFile("app/apps.py", resource.createApps);
@@ -44,6 +45,17 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		pip install -r requirements.txt
 		python manage.py makemigrations app
 		python manage.py migrate
+		deactivate
+		
+	'''
+
+	private def createRun(Resource resource)'''
+		#!/bin/bash
+		source env/bin/activate
+		pip install -r requirements.txt
+		python manage.py makemigrations app
+		python manage.py migrate
+		python manage.py runserver
 		deactivate
 		
 	'''
@@ -289,7 +301,7 @@ class DjangoBaseGenerator extends AbstractGenerator {
 	'''
 	
 	private def createModels(Resource resource)'''
-		
+		# Create your models here.
 	'''
 	
 	private def createTests(Resource resource)'''

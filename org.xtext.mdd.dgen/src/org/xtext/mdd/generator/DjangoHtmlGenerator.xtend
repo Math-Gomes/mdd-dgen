@@ -87,6 +87,9 @@ class DjangoHtmlGenerator extends AbstractGenerator {
                         «FOR f : e.features»
                         <th>«f.name»</th>
                         «ENDFOR»
+                        «IF e.superType !== null»«FOR f: e.superType.features»
+                        <th>«f.name»</th>
+                        «ENDFOR»«ENDIF»
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -96,6 +99,9 @@ class DjangoHtmlGenerator extends AbstractGenerator {
                             «FOR f : e.features»
                             <td>{{ «e.name.toLowerCase».«f.name.toLowerCase» }}</td>
                             «ENDFOR»
+                            «IF e.superType !== null»«FOR f: e.superType.features»
+                            <td>{{ «e.name.toLowerCase».«f.name.toLowerCase» }}</td>
+                            «ENDFOR»«ENDIF»
                             <td>
                                 «val what = try {
                                     val group = e.views.viewGroup.name

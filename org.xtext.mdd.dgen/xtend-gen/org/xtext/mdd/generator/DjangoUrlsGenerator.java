@@ -47,10 +47,22 @@ public class DjangoUrlsGenerator extends AbstractGenerator {
     _builder.append(")");
     _builder.newLine();
     _builder.newLine();
+    _builder.append("from .login import SignUpView, LoginUserView, LogoutView");
+    _builder.newLine();
+    _builder.newLine();
     _builder.append("urlpatterns = [");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("path(\'\', Home.as_view(), name=\'home\'),");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("path(\'signup/\', SignUpView, name=\'signup\'),");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("path(\'accounts/login/\', LoginUserView.as_view(), name=\'login\'),");
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("path(\'logout/\', LogoutView, name=\'logout\'),");
     _builder.newLine();
     _builder.append("    ");
     {

@@ -23,9 +23,14 @@ class DjangoUrlsGenerator extends AbstractGenerator {
                 «entity.importViews»
             «ENDFOR»
         )
+
+        from .login import SignUpView, LoginUserView, LogoutView
         
         urlpatterns = [
             path('', Home.as_view(), name='home'),
+            path('signup/', SignUpView, name='signup'),
+            path('accounts/login/', LoginUserView.as_view(), name='login'),
+            path('logout/', LogoutView, name='logout'),
             «FOR entity : resource.allContents.toIterable.filter(Entity)»«entity.path»«ENDFOR»
         ]
     '''
