@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
 import org.xtext.mdd.dgen.Entity
+import org.xtext.mdd.dgen.Feature
 import org.eclipse.xtext.naming.IQualifiedNameProvider
 
 class DjangoTemplateGenerator extends AbstractGenerator {
@@ -16,6 +17,7 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 		fsa.generateFile("app/templates/bootstrap/index.html", resource.createIndex);
 		fsa.generateFile("app/templates/bootstrap/login.html", resource.createLogin);
 		fsa.generateFile("app/templates/bootstrap/register.html", resource.createRegister);
+		fsa.generateFile("app/templates/bootstrap/home.html", resource.createHome);
 	}
 	
 	private def createIndex(Resource resource)'''
@@ -602,5 +604,110 @@ class DjangoTemplateGenerator extends AbstractGenerator {
 
 		</html>
 
+	'''
+
+	private def createHome(Resource resource)'''
+		{% extends 'bootstrap/index.html' %}
+		{% block content %}
+		<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+		<style>
+			.grid-container {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-gap: 15px;
+				row-gap: 15px;
+				margin-top: 15px;
+			}
+			.grid-item {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 10px 0;
+			}
+			.grid-item {
+				min-width: 380px;
+				background-color: white;
+				border-radius: 10px;
+				box-shadow: 0 0 15px 1px #eeecec;
+			}
+			.title{
+				text-align: center; 
+				color: #153e5c;
+				font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"
+			}
+		</style>
+
+		<h1 class="title"><i class="fas fa-project-diagram"></i> DGEN</h1>
+		<div style="width: 100%; margin-top: 20px;">
+			<div class="grid-item" style="text-align: center;">
+				<div id="chart" style="display: inline-block; text-align: left;"></div>
+			</div>
+		</div>
+		<div class="grid-container">
+			«FOR e : resource.allContents.toIterable.filter(Entity)»
+			«IF !e.features.filter(Feature).filter[type.name=="Int"].isEmpty»
+			<div class="grid-item">
+				<div id="chart-«e.name.toLowerCase»"></div>
+			</div>
+			«ENDIF»
+			«ENDFOR»
+		</div>
+
+		<script>
+			var options = {
+				chart: {
+				width: 380,
+				type: 'pie',
+				},
+				theme: {
+					palette: 'palette4' // upto palette10
+				},
+				title: {
+					text: 'Percentual das Entidades Cadastradas',
+					align: 'center'
+				},
+				series: [«FOR e : resource.allContents.toIterable.filter(Entity) SEPARATOR ', '»{{ len_«e.name.toLowerCase» }}«ENDFOR»],
+				labels: [«FOR e : resource.allContents.toIterable.filter(Entity) SEPARATOR ', '»'«e.fullyQualifiedName»'«ENDFOR»]
+			}
+			var chart = new ApexCharts(document.querySelector("#chart"), options);
+			chart.render();
+
+			«FOR e : resource.allContents.toIterable.filter(Entity)»
+				«IF !e.features.filter(Feature).filter[type.name=="Int"].isEmpty»
+				var options_«e.name.toLowerCase» = {
+					chart: {
+						type: 'bar'
+					},
+					plotOptions: {
+						bar: {
+							distributed: true
+						}
+					},
+					theme: {
+						palette: 'palette4' // upto palette10
+					},
+					legend:{
+						show: false
+					},
+					title: {
+						text: '«e.features.filter(Feature).filter[type.name=="Int"].get(0).name.toFirstUpper» dos(as) «e.fullyQualifiedName»s',
+						align: 'center'
+					},
+					series: [{
+						name: '«e.features.filter(Feature).filter[type.name=="Int"].get(0).name.toFirstUpper»',
+						data: [{% for o in «e.name.toLowerCase» %}{{ o.«e.features.filter(Feature).filter[type.name=="Int"].get(0).name» }},{% endfor %}]
+					}],
+					xaxis: {
+						categories: [{% for o in «e.name.toLowerCase» %}"{{ o }}",{% endfor %}]
+					}
+				}
+				var chart = new ApexCharts(document.querySelector("#chart-«e.name.toLowerCase»"), options_«e.name.toLowerCase»);
+				chart.render();
+				«ENDIF»
+			«ENDFOR»		
+
+		</script>
+
+		{% endblock %}
 	'''
 }

@@ -17,6 +17,7 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     fsa.generateFile("project/wsgi.py", this.createWsgi(resource));
     fsa.generateFile("requirements.txt", this.createRequirements(resource));
     fsa.generateFile("scripts/init.sh", this.createInit(resource));
+    fsa.generateFile("scripts/run.sh", this.createRun(resource));
     fsa.generateFile("app/admin.py", this.createAdmin(resource));
     fsa.generateFile("app/apps.py", this.createApps(resource));
     fsa.generateFile("app/models.py", this.createModels(resource));
@@ -58,6 +59,26 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.append("python manage.py makemigrations app");
     _builder.newLine();
     _builder.append("python manage.py migrate");
+    _builder.newLine();
+    _builder.append("deactivate");
+    _builder.newLine();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createRun(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("#!/bin/bash");
+    _builder.newLine();
+    _builder.append("source env/bin/activate");
+    _builder.newLine();
+    _builder.append("pip install -r requirements.txt");
+    _builder.newLine();
+    _builder.append("python manage.py makemigrations app");
+    _builder.newLine();
+    _builder.append("python manage.py migrate");
+    _builder.newLine();
+    _builder.append("python manage.py runserver");
     _builder.newLine();
     _builder.append("deactivate");
     _builder.newLine();
@@ -547,7 +568,7 @@ public class DjangoBaseGenerator extends AbstractGenerator {
   
   private CharSequence createModels(final Resource resource) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("\t\t");
+    _builder.append("# Create your models here.");
     _builder.newLine();
     return _builder;
   }

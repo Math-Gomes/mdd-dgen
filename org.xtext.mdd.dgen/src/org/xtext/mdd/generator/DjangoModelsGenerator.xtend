@@ -40,7 +40,7 @@ class DjangoModelsGenerator extends AbstractGenerator {
             «ENDFOR»
 
             def __str__(self):
-                return str(self.«e.features.get(0).name»)
+                return str(self.«IF e.superType !== null»«e.superType.features.get(0).name»«ELSE»«e.features.get(0).name»«ENDIF»)
     '''
 
     private def createAttributes(Feature f)'''

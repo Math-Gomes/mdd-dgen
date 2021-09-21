@@ -146,7 +146,7 @@ class DjangoHtmlGenerator extends AbstractGenerator {
         {% block content %}  
         <div class="my-container">
             <form action="" method="post">{% csrf_token %}
-                <p>Tem certeza que deseja deletar este(a) «e.name.toLowerCase» "{{ object.«e.features.get(0).name» }}"?</p>
+                <p>Tem certeza que deseja deletar este(a) «e.name.toLowerCase» "{{ object }}"?</p>
                 <div class="my-container">
                     <input type="submit" value="Deletar" class="btn btn-danger"/>
                     <button type='button' class="btn" onclick="window.location.href={% url '«e.name.toLowerCase»_read' %}">Cancelar</button>

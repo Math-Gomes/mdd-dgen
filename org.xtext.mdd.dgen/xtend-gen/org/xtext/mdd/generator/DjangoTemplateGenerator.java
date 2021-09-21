@@ -11,12 +11,15 @@ import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
 import org.eclipse.xtext.naming.IQualifiedNameProvider;
 import org.eclipse.xtext.naming.QualifiedName;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.Extension;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.IteratorExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 import org.xtext.mdd.dgen.Entity;
+import org.xtext.mdd.dgen.Feature;
 import org.xtext.mdd.dgen.ViewOptions;
 
 @SuppressWarnings("all")
@@ -30,6 +33,7 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     fsa.generateFile("app/templates/bootstrap/index.html", this.createIndex(resource));
     fsa.generateFile("app/templates/bootstrap/login.html", this.createLogin(resource));
     fsa.generateFile("app/templates/bootstrap/register.html", this.createRegister(resource));
+    fsa.generateFile("app/templates/bootstrap/home.html", this.createHome(resource));
   }
   
   private CharSequence createIndex(final Resource resource) {
@@ -1643,6 +1647,400 @@ public class DjangoTemplateGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("</html>");
     _builder.newLine();
+    _builder.newLine();
+    return _builder;
+  }
+  
+  private CharSequence createHome(final Resource resource) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("{% extends \'bootstrap/index.html\' %}");
+    _builder.newLine();
+    _builder.append("{% block content %}");
+    _builder.newLine();
+    _builder.append("<script src=\"https://cdn.jsdelivr.net/npm/apexcharts\"></script>");
+    _builder.newLine();
+    _builder.append("<style>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append(".grid-container {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("display: grid;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("grid-template-columns: 1fr 1fr;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("grid-gap: 15px;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("row-gap: 15px;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("margin-top: 15px;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append(".grid-item {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("display: flex;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("align-items: center;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("justify-content: center;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("padding: 10px 0;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append(".grid-item {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("min-width: 380px;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("background-color: white;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("border-radius: 10px;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("box-shadow: 0 0 15px 1px #eeecec;");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append(".title{");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("text-align: center; ");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("color: #153e5c;");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("font-family: -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,\"Helvetica Neue\",Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\",\"Segoe UI Symbol\",\"Noto Color Emoji\"");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("</style>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("<h1 class=\"title\"><i class=\"fas fa-project-diagram\"></i> DGEN</h1>");
+    _builder.newLine();
+    _builder.append("<div style=\"width: 100%; margin-top: 20px;\">");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("<div class=\"grid-item\" style=\"text-align: center;\">");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("<div id=\"chart\" style=\"display: inline-block; text-align: left;\"></div>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.append("<div class=\"grid-container\">");
+    _builder.newLine();
+    {
+      Iterable<Entity> _filter = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
+      for(final Entity e : _filter) {
+        {
+          final Function1<Feature, Boolean> _function = (Feature it) -> {
+            String _name = it.getType().getName();
+            return Boolean.valueOf(Objects.equal(_name, "Int"));
+          };
+          boolean _isEmpty = IterableExtensions.isEmpty(IterableExtensions.<Feature>filter(Iterables.<Feature>filter(e.getFeatures(), Feature.class), _function));
+          boolean _not = (!_isEmpty);
+          if (_not) {
+            _builder.append("\t");
+            _builder.append("<div class=\"grid-item\">");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("<div id=\"chart-");
+            String _lowerCase = e.getName().toLowerCase();
+            _builder.append(_lowerCase, "\t\t");
+            _builder.append("\"></div>");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("</div>");
+            _builder.newLine();
+          }
+        }
+      }
+    }
+    _builder.append("</div>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("<script>");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("var options = {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("chart: {");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("width: 380,");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("type: \'pie\',");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("},");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("theme: {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("palette: \'palette4\' // upto palette10");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("},");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("title: {");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("text: \'Percentual das Entidades Cadastradas\',");
+    _builder.newLine();
+    _builder.append("\t\t\t");
+    _builder.append("align: \'center\'");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("},");
+    _builder.newLine();
+    _builder.append("\t\t");
+    _builder.append("series: [");
+    {
+      Iterable<Entity> _filter_1 = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
+      boolean _hasElements = false;
+      for(final Entity e_1 : _filter_1) {
+        if (!_hasElements) {
+          _hasElements = true;
+        } else {
+          _builder.appendImmediate(", ", "\t\t");
+        }
+        _builder.append("{{ len_");
+        String _lowerCase_1 = e_1.getName().toLowerCase();
+        _builder.append(_lowerCase_1, "\t\t");
+        _builder.append(" }}");
+      }
+    }
+    _builder.append("],");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t\t");
+    _builder.append("labels: [");
+    {
+      Iterable<Entity> _filter_2 = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
+      boolean _hasElements_1 = false;
+      for(final Entity e_2 : _filter_2) {
+        if (!_hasElements_1) {
+          _hasElements_1 = true;
+        } else {
+          _builder.appendImmediate(", ", "\t\t");
+        }
+        _builder.append("\'");
+        QualifiedName _fullyQualifiedName = this._iQualifiedNameProvider.getFullyQualifiedName(e_2);
+        _builder.append(_fullyQualifiedName, "\t\t");
+        _builder.append("\'");
+      }
+    }
+    _builder.append("]");
+    _builder.newLineIfNotEmpty();
+    _builder.append("\t");
+    _builder.append("}");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("var chart = new ApexCharts(document.querySelector(\"#chart\"), options);");
+    _builder.newLine();
+    _builder.append("\t");
+    _builder.append("chart.render();");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      Iterable<Entity> _filter_3 = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
+      for(final Entity e_3 : _filter_3) {
+        {
+          final Function1<Feature, Boolean> _function_1 = (Feature it) -> {
+            String _name = it.getType().getName();
+            return Boolean.valueOf(Objects.equal(_name, "Int"));
+          };
+          boolean _isEmpty_1 = IterableExtensions.isEmpty(IterableExtensions.<Feature>filter(Iterables.<Feature>filter(e_3.getFeatures(), Feature.class), _function_1));
+          boolean _not_1 = (!_isEmpty_1);
+          if (_not_1) {
+            _builder.append("\t");
+            _builder.append("var options_");
+            String _lowerCase_2 = e_3.getName().toLowerCase();
+            _builder.append(_lowerCase_2, "\t");
+            _builder.append(" = {");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("chart: {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("type: \'bar\'");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("},");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("plotOptions: {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("bar: {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t\t");
+            _builder.append("distributed: true");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("}");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("},");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("theme: {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("palette: \'palette4\' // upto palette10");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("},");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("legend:{");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("show: false");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("},");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("title: {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("text: \'");
+            final Function1<Feature, Boolean> _function_2 = (Feature it) -> {
+              String _name = it.getType().getName();
+              return Boolean.valueOf(Objects.equal(_name, "Int"));
+            };
+            String _firstUpper = StringExtensions.toFirstUpper((((Feature[])Conversions.unwrapArray(IterableExtensions.<Feature>filter(Iterables.<Feature>filter(e_3.getFeatures(), Feature.class), _function_2), Feature.class))[0]).getName());
+            _builder.append(_firstUpper, "\t\t\t");
+            _builder.append(" dos(as) ");
+            QualifiedName _fullyQualifiedName_1 = this._iQualifiedNameProvider.getFullyQualifiedName(e_3);
+            _builder.append(_fullyQualifiedName_1, "\t\t\t");
+            _builder.append("s\',");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("align: \'center\'");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("},");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("series: [{");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("name: \'");
+            final Function1<Feature, Boolean> _function_3 = (Feature it) -> {
+              String _name = it.getType().getName();
+              return Boolean.valueOf(Objects.equal(_name, "Int"));
+            };
+            String _firstUpper_1 = StringExtensions.toFirstUpper((((Feature[])Conversions.unwrapArray(IterableExtensions.<Feature>filter(Iterables.<Feature>filter(e_3.getFeatures(), Feature.class), _function_3), Feature.class))[0]).getName());
+            _builder.append(_firstUpper_1, "\t\t\t");
+            _builder.append("\',");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("data: [{% for o in ");
+            String _lowerCase_3 = e_3.getName().toLowerCase();
+            _builder.append(_lowerCase_3, "\t\t\t");
+            _builder.append(" %}{{ o.");
+            final Function1<Feature, Boolean> _function_4 = (Feature it) -> {
+              String _name = it.getType().getName();
+              return Boolean.valueOf(Objects.equal(_name, "Int"));
+            };
+            String _name = (((Feature[])Conversions.unwrapArray(IterableExtensions.<Feature>filter(Iterables.<Feature>filter(e_3.getFeatures(), Feature.class), _function_4), Feature.class))[0]).getName();
+            _builder.append(_name, "\t\t\t");
+            _builder.append(" }},{% endfor %}]");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("}],");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("xaxis: {");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("\t\t");
+            _builder.append("categories: [{% for o in ");
+            String _lowerCase_4 = e_3.getName().toLowerCase();
+            _builder.append(_lowerCase_4, "\t\t\t");
+            _builder.append(" %}\"{{ o }}\",{% endfor %}]");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("\t");
+            _builder.append("}");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("}");
+            _builder.newLine();
+            _builder.append("\t");
+            _builder.append("var chart = new ApexCharts(document.querySelector(\"#chart-");
+            String _lowerCase_5 = e_3.getName().toLowerCase();
+            _builder.append(_lowerCase_5, "\t");
+            _builder.append("\"), options_");
+            String _lowerCase_6 = e_3.getName().toLowerCase();
+            _builder.append(_lowerCase_6, "\t");
+            _builder.append(");");
+            _builder.newLineIfNotEmpty();
+            _builder.append("\t");
+            _builder.append("chart.render();");
+            _builder.newLine();
+          }
+        }
+      }
+    }
+    _builder.newLine();
+    _builder.append("</script>");
+    _builder.newLine();
+    _builder.newLine();
+    _builder.append("{% endblock %}");
     _builder.newLine();
     return _builder;
   }

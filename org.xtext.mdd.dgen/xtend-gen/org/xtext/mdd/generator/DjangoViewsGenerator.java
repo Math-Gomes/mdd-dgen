@@ -62,12 +62,45 @@ public class DjangoViewsGenerator extends AbstractGenerator {
     _builder.append("class Home(LoginRequiredMixin, TemplateView):");
     _builder.newLine();
     _builder.append("    ");
-    _builder.append("template_name = \'bootstrap/index.html\'");
+    _builder.append("template_name = \'bootstrap/home.html\'");
     _builder.newLine();
+    _builder.newLine();
+    _builder.append("    ");
+    _builder.append("def get_context_data(self, **kwargs):");
+    _builder.newLine();
+    _builder.append("        ");
+    _builder.append("context = super().get_context_data(**kwargs)");
     _builder.newLine();
     {
       Iterable<Entity> _filter_1 = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
-      for(final Entity entity : _filter_1) {
+      for(final Entity e_1 : _filter_1) {
+        _builder.append("        ");
+        _builder.append("context[\'");
+        String _lowerCase = e_1.getName().toLowerCase();
+        _builder.append(_lowerCase, "        ");
+        _builder.append("\'] = ");
+        String _name = e_1.getName();
+        _builder.append(_name, "        ");
+        _builder.append(".objects.all() ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("        ");
+        _builder.append("context[\'len_");
+        String _lowerCase_1 = e_1.getName().toLowerCase();
+        _builder.append(_lowerCase_1, "        ");
+        _builder.append("\'] = len(");
+        String _name_1 = e_1.getName();
+        _builder.append(_name_1, "        ");
+        _builder.append(".objects.all())");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("        ");
+    _builder.append("return context");
+    _builder.newLine();
+    _builder.newLine();
+    {
+      Iterable<Entity> _filter_2 = Iterables.<Entity>filter(IteratorExtensions.<EObject>toIterable(resource.getAllContents()), Entity.class);
+      for(final Entity entity : _filter_2) {
         String _xtrycatchfinallyexpression = null;
         try {
           String _xblockexpression = null;
@@ -93,8 +126,8 @@ public class DjangoViewsGenerator extends AbstractGenerator {
           boolean _equals = Objects.equal(what, "group");
           if (_equals) {
             {
-              String _name = entity.getViews().getViewGroup().getName();
-              boolean _equals_1 = Objects.equal(_name, "All");
+              String _name_2 = entity.getViews().getViewGroup().getName();
+              boolean _equals_1 = Objects.equal(_name_2, "All");
               if (_equals_1) {
                 CharSequence _createView = this.createView(entity);
                 _builder.append(_createView);
@@ -112,8 +145,8 @@ public class DjangoViewsGenerator extends AbstractGenerator {
               EList<ViewOptions> _viewOption = entity.getViews().getViewOption();
               for(final ViewOptions opt : _viewOption) {
                 {
-                  String _name_1 = opt.getName();
-                  boolean _equals_2 = Objects.equal(_name_1, "Create");
+                  String _name_3 = opt.getName();
+                  boolean _equals_2 = Objects.equal(_name_3, "Create");
                   if (_equals_2) {
                     CharSequence _createView_1 = this.createView(entity);
                     _builder.append(_createView_1);
@@ -121,8 +154,8 @@ public class DjangoViewsGenerator extends AbstractGenerator {
                   }
                 }
                 {
-                  String _name_2 = opt.getName();
-                  boolean _equals_3 = Objects.equal(_name_2, "Read");
+                  String _name_4 = opt.getName();
+                  boolean _equals_3 = Objects.equal(_name_4, "Read");
                   if (_equals_3) {
                     CharSequence _readView_1 = this.readView(entity);
                     _builder.append(_readView_1);
@@ -130,8 +163,8 @@ public class DjangoViewsGenerator extends AbstractGenerator {
                   }
                 }
                 {
-                  String _name_3 = opt.getName();
-                  boolean _equals_4 = Objects.equal(_name_3, "Update");
+                  String _name_5 = opt.getName();
+                  boolean _equals_4 = Objects.equal(_name_5, "Update");
                   if (_equals_4) {
                     CharSequence _updateView_1 = this.updateView(entity);
                     _builder.append(_updateView_1);
@@ -139,8 +172,8 @@ public class DjangoViewsGenerator extends AbstractGenerator {
                   }
                 }
                 {
-                  String _name_4 = opt.getName();
-                  boolean _equals_5 = Objects.equal(_name_4, "Delete");
+                  String _name_6 = opt.getName();
+                  boolean _equals_5 = Objects.equal(_name_6, "Delete");
                   if (_equals_5) {
                     CharSequence _deleteView_1 = this.deleteView(entity);
                     _builder.append(_deleteView_1);

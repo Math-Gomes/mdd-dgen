@@ -443,10 +443,7 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("<p>Tem certeza que deseja deletar este(a) ");
     String _lowerCase = e.getName().toLowerCase();
     _builder.append(_lowerCase, "        ");
-    _builder.append(" \"{{ object.");
-    String _name = e.getFeatures().get(0).getName();
-    _builder.append(_name, "        ");
-    _builder.append(" }}\"?</p>");
+    _builder.append(" \"{{ object }}\"?</p>");
     _builder.newLineIfNotEmpty();
     _builder.append("        ");
     _builder.append("<div class=\"my-container\">");

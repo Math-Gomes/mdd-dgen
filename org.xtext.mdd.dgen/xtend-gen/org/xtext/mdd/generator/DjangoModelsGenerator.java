@@ -83,8 +83,17 @@ public class DjangoModelsGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("        ");
     _builder.append("return str(self.");
-    String _name_1 = e.getFeatures().get(0).getName();
-    _builder.append(_name_1, "        ");
+    {
+      Entity _superType_1 = e.getSuperType();
+      boolean _tripleNotEquals_1 = (_superType_1 != null);
+      if (_tripleNotEquals_1) {
+        String _name_1 = e.getSuperType().getFeatures().get(0).getName();
+        _builder.append(_name_1, "        ");
+      } else {
+        String _name_2 = e.getFeatures().get(0).getName();
+        _builder.append(_name_2, "        ");
+      }
+    }
     _builder.append(")");
     _builder.newLineIfNotEmpty();
     return _builder;

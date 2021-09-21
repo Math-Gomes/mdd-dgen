@@ -26,7 +26,15 @@ class DjangoViewsGenerator extends AbstractGenerator {
         from django.contrib.auth.mixins import LoginRequiredMixin
 
         class Home(LoginRequiredMixin, TemplateView):
-            template_name = 'bootstrap/index.html'
+            template_name = 'bootstrap/home.html'
+
+            def get_context_data(self, **kwargs):
+                context = super().get_context_data(**kwargs)
+                «FOR e : resource.allContents.toIterable.filter(Entity)»
+                context['«e.name.toLowerCase»'] = «e.name».objects.all() 
+                context['len_«e.name.toLowerCase»'] = len(«e.name».objects.all())
+                «ENDFOR»
+                return context
 
         «FOR entity : resource.allContents.toIterable.filter(Entity)»
         	«val what = try {
