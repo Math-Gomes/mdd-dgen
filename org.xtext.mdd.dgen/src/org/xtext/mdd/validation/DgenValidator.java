@@ -4,6 +4,7 @@
 package org.xtext.mdd.validation;
 
 import org.eclipse.xtext.validation.Check;
+import org.xtext.mdd.dgen.DataType;
 import org.xtext.mdd.dgen.DgenPackage;
 import org.xtext.mdd.dgen.Entity;
 import org.xtext.mdd.dgen.Feature;
@@ -22,7 +23,7 @@ public class DgenValidator extends AbstractDgenValidator {
 	@Check
 	public void checkEntityStartsWithCapital(Entity entity) {
 		if (!Character.isUpperCase(entity.getName().charAt(0))) {
-			warning("Nome da entity deve comeÃ§ar com letra maiÃºscula",
+			warning("Nome da entity deve começar com letra maiúscula",
 					DgenPackage.Literals.TYPE__NAME,
 					INVALID_NAME);
 		}
@@ -34,7 +35,7 @@ public class DgenValidator extends AbstractDgenValidator {
         while (superEntity != null) {
             for (Feature other : superEntity.getFeatures()) {
                 if (Objects.equals(feature.getName(), other.getName())) {
-                    error("Feature jÃ¡ existente na entidade pai", DgenPackage.Literals.FEATURE__NAME);
+                    error("Feature já existente na entidade pai", DgenPackage.Literals.FEATURE__NAME);
                     return;
                 }
             }
@@ -50,6 +51,18 @@ public class DgenValidator extends AbstractDgenValidator {
                 error("Feature duplicada", DgenPackage.Literals.FEATURE__NAME);
                 return;
             }
+        }
+    }
+
+    @Check 
+    public void checkDataTypes(DataType dataType) {
+        if (!(
+            dataType.getName().equals("Int")    || 
+            dataType.getName().equals("Float")  || 
+            dataType.getName().equals("String") || 
+            dataType.getName().equals("Date") 
+        )) {
+            error("DataType inválido", DgenPackage.Literals.TYPE__NAME);
         }
     }
 	
