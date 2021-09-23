@@ -31,7 +31,6 @@ class DjangoBaseGenerator extends AbstractGenerator {
 		asgiref==3.4.1
 		Django==3.2.7
 		django-crispy-forms==1.12.0
-		pkg_resources==0.0.0
 		pytz==2021.1
 		sqlparse==0.4.1
 	'''

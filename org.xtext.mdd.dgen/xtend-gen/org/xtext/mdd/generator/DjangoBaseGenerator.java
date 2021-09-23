@@ -33,8 +33,6 @@ public class DjangoBaseGenerator extends AbstractGenerator {
     _builder.newLine();
     _builder.append("django-crispy-forms==1.12.0");
     _builder.newLine();
-    _builder.append("pkg_resources==0.0.0");
-    _builder.newLine();
     _builder.append("pytz==2021.1");
     _builder.newLine();
     _builder.append("sqlparse==0.4.1");

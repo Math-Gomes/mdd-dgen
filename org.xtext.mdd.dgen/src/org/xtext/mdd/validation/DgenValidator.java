@@ -3,6 +3,12 @@
  */
 package org.xtext.mdd.validation;
 
+import org.eclipse.xtext.validation.Check;
+import org.xtext.mdd.dgen.DgenPackage;
+import org.xtext.mdd.dgen.Entity;
+import org.xtext.mdd.dgen.Feature;
+
+import java.util.Objects;
 
 /**
  * This class contains custom validation rules. 
@@ -11,15 +17,40 @@ package org.xtext.mdd.validation;
  */
 public class DgenValidator extends AbstractDgenValidator {
 	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					DgenPackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
+	public static final String INVALID_NAME = "invalidName";
+
+	@Check
+	public void checkEntityStartsWithCapital(Entity entity) {
+		if (!Character.isUpperCase(entity.getName().charAt(0))) {
+			warning("Nome da entity deve começar com letra maiúscula",
+					DgenPackage.Literals.TYPE__NAME,
+					INVALID_NAME);
+		}
+	}
+
+    @Check
+    public void checkFeatureAlreadyExistsInSuperType(Feature feature) {
+        Entity superEntity = ((Entity) feature.eContainer()).getSuperType();
+        while (superEntity != null) {
+            for (Feature other : superEntity.getFeatures()) {
+                if (Objects.equals(feature.getName(), other.getName())) {
+                    error("Feature já existente na entidade pai", DgenPackage.Literals.FEATURE__NAME);
+                    return;
+                }
+            }
+            superEntity = superEntity.getSuperType();
+        }
+    }
+
+    @Check
+    public void checkFeatureAlreadyExistsInEntity(Feature feature) {
+        Entity entity = (Entity) feature.eContainer();
+        for (Feature other : entity.getFeatures()) {
+            if (feature != other && Objects.equals(feature.getName(), other.getName())) {
+                error("Feature duplicada", DgenPackage.Literals.FEATURE__NAME);
+                return;
+            }
+        }
+    }
 	
 }
