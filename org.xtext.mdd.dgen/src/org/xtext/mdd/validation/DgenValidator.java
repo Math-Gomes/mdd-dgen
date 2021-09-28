@@ -8,7 +8,9 @@ import org.xtext.mdd.dgen.DataType;
 import org.xtext.mdd.dgen.DgenPackage;
 import org.xtext.mdd.dgen.Entity;
 import org.xtext.mdd.dgen.Feature;
+import org.xtext.mdd.dgen.Domainmodel;
 
+import java.util.HashSet;
 import java.util.Objects;
 
 /**
@@ -65,5 +67,19 @@ public class DgenValidator extends AbstractDgenValidator {
             error("DataType inválido", DgenPackage.Literals.TYPE__NAME);
         }
     }
-	
+    
+    @Check
+    public void checkFeatureCantBeMany(Feature feature) {
+        if (feature.isMany() && (
+            feature.getType().getName().equals("Int")    || 
+            feature.getType().getName().equals("Float")  || 
+            feature.getType().getName().equals("String") || 
+            feature.getType().getName().equals("Date"))
+        ) {
+    		error("Tipos primitivos não podem ser multivalorados", DgenPackage.Literals.FEATURE__MANY);
+    		return;
+        }
+    }
 }
+	
+

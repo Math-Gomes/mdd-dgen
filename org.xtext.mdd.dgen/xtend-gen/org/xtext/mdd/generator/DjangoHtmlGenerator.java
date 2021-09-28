@@ -128,7 +128,10 @@ public class DjangoHtmlGenerator extends AbstractGenerator {
     _builder.append("{{ form|crispy }}");
     _builder.newLine();
     _builder.append("        ");
-    _builder.append("<input name=\"submit\" class=\"btn btn-success\" type=\"submit\" value=\"Salvar\" />");
+    _builder.append("<input name=\"submit\" class=\"btn btn-success\" ");
+    _builder.newLine();
+    _builder.append("        \t");
+    _builder.append("type=\"submit\" value=\"Salvar\" />");
     _builder.newLine();
     _builder.append("    ");
     _builder.append("</form>");

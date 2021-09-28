@@ -52,7 +52,8 @@ class DjangoHtmlGenerator extends AbstractGenerator {
             <form action="" method="post">
                 {% csrf_token %}
                 {{ form|crispy }}
-                <input name="submit" class="btn btn-success" type="submit" value="Salvar" />
+                <input name="submit" class="btn btn-success" 
+                	type="submit" value="Salvar" />
             </form>
         {% endblock %}
     '''
