@@ -107,13 +107,14 @@ public class DjangoModelsGenerator extends AbstractGenerator {
     {
       boolean _isMany = f.isMany();
       if (_isMany) {
-        _builder.append("models.ManyToManyField(");
+        _builder.append("models.ManyToManyField(\'");
         String _name = f.getType().getName();
         _builder.append(_name);
+        _builder.append("\'");
         {
           boolean _isOptional = f.isOptional();
           if (_isOptional) {
-            _builder.append(", blank=True, null=True");
+            _builder.append(", blank=True");
           }
         }
         _builder.append(")");

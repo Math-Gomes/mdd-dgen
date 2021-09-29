@@ -45,7 +45,7 @@ class DjangoModelsGenerator extends AbstractGenerator {
 
     private def createAttributes(Feature f)'''
         «f.name.toLowerCase» = «
-        IF f.many                      »models.ManyToManyField(«f.type.name»«IF f.optional», blank=True, null=True«ENDIF»)«
+        IF f.many                      »models.ManyToManyField('«f.type.name»'«IF f.optional», blank=True«ENDIF»)«
         ELSEIF f.type.name == "String" »models.CharField(max_length=200«IF f.optional», blank=True«ENDIF»)«
         ELSEIF f.type.name == "Int"    »models.BigIntegerField(«IF f.optional»blank=True«ENDIF»)«
         ELSEIF f.type.name == "Float"  »models.FloatField(«IF f.optional»blank=True«ENDIF»)«
